@@ -23,6 +23,11 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(50);
             builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(50);
+            builder.Entity<User>().HasData
+                (
+                    new User { Id = 100, Email = "felipedota2@gmail.com", Password = "slark" },
+                    new User { Id = 101, Email = "xavistian@gmail.com", Password = "tiaaaaaaaan" }
+                );
 
             ApplySnakeCaseNamingConvention(builder);
         }
