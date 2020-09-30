@@ -41,6 +41,16 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new PaymentMethod { Id = 68, Name = "TarjetaConeyPark" }
                 );
 
+            // Service Entity
+            builder.Entity<Service>().ToTable("Service");
+            builder.Entity<Service>().HasKey(p => p.Id);
+            builder.Entity<Service>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Service>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Service>().HasData
+                (
+                    new Service { Id = 100, Name = "LavadoalSeco" },
+                    new Service { Id = 101, Name = "Planchado" }
+                );
             ApplySnakeCaseNamingConvention(builder);
         }
 
