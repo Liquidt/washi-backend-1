@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Washi.API",
+    "\\Washi.API\\Domain",
+    "\\Washi.API\\Domain\\Models"
+  ],
+  "SelectedNode": "\\Washi.API\\Domain\\Models\\User.cs",
+  "PreviewInSolutionExplorer": false
+}
