@@ -9,6 +9,7 @@ using Washi.API.Domain.Models;
 using Washi.API.Domain.Services;
 using Washi.API.Extensions;
 using Washi.API.Resources;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Washi.API.Controllers
 {
@@ -24,7 +25,15 @@ namespace Washi.API.Controllers
             _mapper = mapper;
         }
 
+        [SwaggerOperation(
+            Summary = "List all users",
+            Description = "List of users",
+            OperationId = "ListAllUsers",
+            Tags = new[] { "Users" })]
+        [SwaggerResponse(200, "List of Users", typeof(IEnumerable<UserResource>))]
         [HttpGet]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(IEnumerable<UserResource>), 200)]
         public async Task<IEnumerable<UserResource>> GetAllAsync()
         {
             var users = await _userService.ListAsync();

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Washi.API.Domain.Persistence.Contexts;
 using Washi.API.Domain.Repositories;
 using Washi.API.Domain.Services;
@@ -38,14 +39,18 @@ namespace Washi.API
             {
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
-
+            //Scoped Repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            
+            //Scoped Services
             services.AddScoped<IUserService, UserService>();
-
+            
+            //Mapper
             services.AddAutoMapper(typeof(Startup));
 
+            //Swagger
+            services.AddRouting(options => options.LowercaseUrls = true);
             services.AddCustomSwagger();
         }
 
