@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Washi.API.Domain.Persistence.Contexts;
 using Washi.API.Domain.Repositories;
 using Washi.API.Domain.Services;
+using Washi.API.Extensions;
 using Washi.API.Persistence.Repositories;
 using Washi.API.Services;
 
@@ -44,6 +45,8 @@ namespace Washi.API
             services.AddScoped<IUserService, UserService>();
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddCustomSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +67,7 @@ namespace Washi.API
             {
                 endpoints.MapControllers();
             });
+            app.UserCustomSwagger();
         }
     }
 }

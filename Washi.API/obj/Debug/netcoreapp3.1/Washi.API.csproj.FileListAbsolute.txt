@@ -45,8 +45,6 @@ C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
-C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.csproj.CoreCompileInputs.cache
-C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Washi.API.deps.json
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Washi.API.runtimeconfig.json
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Washi.API.runtimeconfig.dev.json
@@ -56,3 +54,11 @@ C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.dll
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.pdb
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.genruntimeconfig.cache
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.csproj.CoreCompileInputs.cache
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cache
