@@ -9,9 +9,9 @@ namespace Washi.API.Domain.Repositories
     public interface IPaymentMethodRepository
     {
         Task<IEnumerable<PaymentMethod>> ListAsync();
-        Task AddSync(PaymentMethod user);
+        Task AddSync(PaymentMethod paymentMethod);
         Task<PaymentMethod> FindById(int id);
-        void Update(PaymentMethod user);
-        void Remove(PaymentMethod user);
+        void Update(PaymentMethod paymentMethod);
+        void Remove(PaymentMethod paymentMethod);
     }
 }
