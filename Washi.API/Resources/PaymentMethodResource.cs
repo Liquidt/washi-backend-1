@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Washi.API.Domain.Models
+namespace Washi.API.Resources
 {
-    public class PaymentMethod
+    public class PaymentMethodResource
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        //possible TODO: Add UserPaymentMethods
     }
 }
