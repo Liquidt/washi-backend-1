@@ -18,6 +18,7 @@ using Washi.API.Domain.Repositories;
 using Washi.API.Domain.Services;
 using Washi.API.Extensions;
 using Washi.API.Persistence.Repositories;
+using Washi.API.Repositories;
 using Washi.API.Services;
 
 namespace Washi.API
@@ -43,11 +44,12 @@ namespace Washi.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
 
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPaymentMethodService, PaymentMethodService>();
-            
+            services.AddScoped<IServiceService, ServiceService>();
             //Mapper
             services.AddAutoMapper(typeof(Startup));
 

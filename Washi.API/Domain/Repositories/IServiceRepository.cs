@@ -10,5 +10,8 @@ namespace Washi.API.Domain.Repositories
     {
         Task<IEnumerable<Service>> ListAsync();
         Task AddAsync(Service service);
+        Task<Service> FindByIdAsync(int id);
+        void Update(Service service);
+        void Remove(Service service);
     }
 }
