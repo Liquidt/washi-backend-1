@@ -45,11 +45,13 @@ namespace Washi.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
 
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPaymentMethodService, PaymentMethodService>();
             services.AddScoped<IServiceService, ServiceService>();
+            services.AddScoped<IMaterialService, MaterialService>();
             //Mapper
             services.AddAutoMapper(typeof(Startup));
 

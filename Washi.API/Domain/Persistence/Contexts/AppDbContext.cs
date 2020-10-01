@@ -14,6 +14,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Material> Materials { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -52,6 +53,18 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new Service { Id = 100, Name = "LavadoalSeco" },
                     new Service { Id = 101, Name = "Planchado" }
                 );
+
+            //Material Entity
+            builder.Entity<Material>().ToTable("Material");
+            builder.Entity<Material>().HasKey(p => p.Id);
+            builder.Entity<Material>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Material>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Material>().HasData
+                (
+                    new Material { Id = 100, Name = "Plancha"},
+                    new Material { Id = 101, Name = "Secador"}
+                );
+
             ApplySnakeCaseNamingConvention(builder);
         }
 
