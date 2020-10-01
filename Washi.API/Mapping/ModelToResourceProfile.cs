@@ -12,7 +12,11 @@ namespace Washi.API.Mapping
     {
         public ModelToResourceProfile()
         {
+            CreateMap<Customer, CustomerResource>();
+            CreateMap<Laundry, LaundryResource>();
+            CreateMap<Account, AccountResource>();
             CreateMap<User, UserResource>();
+
         }
     }
 }

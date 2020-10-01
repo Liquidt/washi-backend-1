@@ -13,6 +13,9 @@ namespace Washi.API.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveUserResource, User>();
+            CreateMap<SaveAccountResource, Account>();
+            CreateMap<SaveCustomerResource, Customer>();
+            CreateMap<SaveLaundryResource, Laundry>();
         }
     }
 }

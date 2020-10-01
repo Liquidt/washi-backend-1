@@ -42,9 +42,16 @@ namespace Washi.API
             //Scoped Repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ILaundryRepository, LaundryRepository > ();
             
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ILaundryService, LaundryService>();
+
             
             //Mapper
             services.AddAutoMapper(typeof(Startup));
