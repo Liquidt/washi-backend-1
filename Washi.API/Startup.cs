@@ -41,17 +41,20 @@ namespace Washi.API
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
             //Scoped Repositories
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPaymentMethodService, PaymentMethodService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<IMaterialService, MaterialService>();
+            services.AddScoped<IUserProfileService, UserProfileService>();
+
             //Mapper
             services.AddAutoMapper(typeof(Startup));
 

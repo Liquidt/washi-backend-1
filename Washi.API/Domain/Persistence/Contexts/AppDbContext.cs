@@ -15,6 +15,8 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -22,15 +24,42 @@ namespace Washi.API.Domain.Persistence.Contexts
             base.OnModelCreating(builder);
 
             //User Entity
-            builder.Entity<User>().ToTable("User");
+            builder.Entity<User>().ToTable("Users");
+            builder.Entity<User>()
+                .HasOne(p => p.UserProfile)
+                .WithOne(p => p.User)
+                .HasForeignKey<UserProfile>(p => p.UserId);
             builder.Entity<User>().HasKey(p => p.Id);
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(50);
             builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(50);
+           
             builder.Entity<User>().HasData
                 (
-                    new User { Id = 100, Email = "felipedota2@gmail.com", Password = "slark" },
-                    new User { Id = 101, Email = "xavistian@gmail.com", Password = "tiaaaaaaaan" }
+                    new User { Id = 1, Email = "felipedota2@gmail.com", Password = "slark" },
+                    new User { Id = 2, Email = "xavistian@gmail.com", Password = "tiaaaaaaaan" }
+                );
+
+            //UserProfile Entity
+
+            builder.Entity<UserProfile>().ToTable("UserProfiles");
+            builder.Entity<UserProfile>().HasKey(p => p.Id);
+            builder.Entity<UserProfile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<UserProfile>().Property(p => p.UserId);
+            builder.Entity<UserProfile>().Property(p => p.FirstName);
+            builder.Entity<UserProfile>().Property(p => p.LastName);
+            builder.Entity<UserProfile>().Property(p => p.DateOfBirth);
+            builder.Entity<UserProfile>().Property(p => p.Sex);
+            builder.Entity<UserProfile>().Property(p => p.DateOfRegistry);
+            builder.Entity<UserProfile>().Property(p => p.Address).IsRequired();
+            builder.Entity<UserProfile>().Property(p => p.PhoneNumber).IsRequired();
+            builder.Entity<UserProfile>().Property(p => p.CorporationName);
+            builder.Entity<UserProfile>().Property(p => p.UserType).IsRequired();
+
+            builder.Entity<UserProfile>().HasData
+                (
+                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Chiclayo", PhoneNumber = 987654321, UserType = EUserType.Washer },
+                    new UserProfile { Id = 2, UserId = 2, CorporationName = "Xavistian Inc", Address = "Watchflowers", PhoneNumber = 999888777, UserType = EUserType.Laundry }
                 );
             // PaymentMethod Entity
             builder.Entity<PaymentMethod>().ToTable("PaymentMethod");
