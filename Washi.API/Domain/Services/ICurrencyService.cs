@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Washi.API.Domain.Models;
 
-namespace Washi.API.Domain.Repositories
+namespace Washi.API.Domain.Services
 {
-    public interface ICurrencyRepository
+    interface ICurrencyService
     {
         Task<IEnumerable<Currency>> ListAsync();
+        Task<IEnumerable<Currency>> ListByCountryIdAsync(int countryId);
     }
 }

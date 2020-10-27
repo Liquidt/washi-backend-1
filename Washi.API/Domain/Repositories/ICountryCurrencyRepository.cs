@@ -6,7 +6,7 @@ using Washi.API.Domain.Models;
 
 namespace Washi.API.Domain.Repositories
 {
-    interface ICountryCurrencyRepository
+    public interface ICountryCurrencyRepository
     {
         Task<CountryCurrency> FindByCountryCurrencyId(int countryCurrencyId);
         Task<IEnumerable<CountryCurrency>> ListByCountryIdAsync(int countryId);
