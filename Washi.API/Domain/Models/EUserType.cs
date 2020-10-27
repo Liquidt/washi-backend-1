@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Washi.API.Domain.Models
 {
-    public class Customer : Account
+    public enum EUserType
     {
-        public DateTime DateOfBirth { get; set; }
-        public string Sex { get; set; }
+        [Description("Washer")] Washer = 1,
+        [Description("Laundry")] Laundry = 2
     }
 }
