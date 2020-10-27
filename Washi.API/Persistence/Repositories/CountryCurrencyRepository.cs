@@ -12,24 +12,37 @@ namespace Washi.API.Persistence.Repositories
     public class CountryCurrencyRepository : BaseRepository, ICountryCurrencyRepository
     {
         public CountryCurrencyRepository(AppDbContext context) : base(context) { }
-        public Task<CountryCurrency> FindByCountryCurrencyId(int countryCurrencyId)
+        public async Task<CountryCurrency> FindByCountryCurrencyId(int countryCurrencyId)
         {
-            throw new NotImplementedException();
+            return await _context.CountryCurrencies.FindAsync(countryCurrencyId);
         }
 
-        public Task<CountryCurrency> FindByCountryIdAndCurrencyId(int countryId, int currencyId)
+        public async Task<IEnumerable<CountryCurrency>> FindByCountryIdAndCurrencyId(int countryId, int currencyId)
         {
-            throw new NotImplementedException();
+            return await _context.CountryCurrencies
+                 .Where(cc => cc.CountryId == countryId)
+                 .Where(cc => cc.CurrencyId == currencyId)
+                 .Include(cc=>cc.Country)
+                 .Include(cc=>cc.Currency)
+                 .ToListAsync();
         }
 
-        public Task<IEnumerable<CountryCurrency>> ListByCountryIdAsync(int countryId)
+        public async Task<IEnumerable<CountryCurrency>> ListByCountryIdAsync(int countryId)
         {
-            throw new NotImplementedException();
+            return await _context.CountryCurrencies
+                .Where(cc => cc.CountryId == countryId)
+                .Include(cc => cc.Country)
+                .Include(cc => cc.Currency)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<CountryCurrency>> ListByCurrencyIdAsync(int currencyId)
+        public async Task<IEnumerable<CountryCurrency>> ListByCurrencyIdAsync(int currencyId)
         {
-            throw new NotImplementedException();
+            return await _context.CountryCurrencies
+                .Where(cc => cc.CurrencyId == currencyId)
+                .Include(cc => cc.Country)
+                .Include(cc => cc.Currency)
+                .ToListAsync();
         }
     }
 }

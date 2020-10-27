@@ -72,7 +72,8 @@ namespace Washi.API.Domain.Persistence.Contexts
 
             //CountryCurrency
             builder.Entity<CountryCurrency>().ToTable("CountryCurrencies");
-            builder.Entity<CountryCurrency>().HasKey(cc => new { cc.CountryId, cc.CurrencyId });
+            builder.Entity<CountryCurrency>().HasKey(cc=>cc.Id);
+            builder.Entity<CountryCurrency>().Property(cc => cc.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<CountryCurrency>().HasOne(cc => cc.Country).WithMany(c => c.CountryCurrencies).HasForeignKey(cc => cc.CountryId);
             builder.Entity<CountryCurrency>().HasOne(cc => cc.Currency).WithMany(c => c.CountryCurrencies).HasForeignKey(cc => cc.CurrencyId);
             builder.Entity<CountryCurrency>().HasData

@@ -11,6 +11,6 @@ namespace Washi.API.Domain.Repositories
         Task<CountryCurrency> FindByCountryCurrencyId(int countryCurrencyId);
         Task<IEnumerable<CountryCurrency>> ListByCountryIdAsync(int countryId);
         Task<IEnumerable<CountryCurrency>> ListByCurrencyIdAsync(int currencyId);
-        Task<CountryCurrency> FindByCountryIdAndCurrencyId(int countryId, int currencyId);
+        Task<IEnumerable<CountryCurrency>> FindByCountryIdAndCurrencyId(int countryId, int currencyId);
     }
 }
