@@ -3129,7 +3129,7 @@
       ]
     },
     "System.Buffers/4.5.0": {
-      "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
+      "sha512": "xpHYjjtyTEpzMwtSQBWdVc3dPjLdQtvyUg6fBlBqcLl1r2Y7gDG/W/enAYOB98nG3oD3Q153Y2FBO8JDWd+0Xw==",
       "type": "package",
       "path": "system.buffers/4.5.0",
       "files": [
@@ -4381,7 +4381,7 @@
       ]
     },
     "System.Net.Http/4.3.0": {
-      "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
+      "sha512": "Z1UfSF6dlpCdZdxh6LeoGlYH+q6ptG/iiIWgUUeKhE3DbQACmZkU7Sz2nOX0qdHjz72MOdYRbkSJ5Qwl6sZgvg==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
@@ -6826,31 +6826,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FLAVIO\\.nuget\\packages\\": {},
+    "C:\\Users\\Liquid\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
+      "projectUniqueName": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
       "projectName": "Washi.API",
-      "projectPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
-      "packagesPath": "C:\\Users\\FLAVIO\\.nuget\\packages\\",
-      "outputPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\obj\\",
+      "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
+      "packagesPath": "C:\\Users\\Liquid\\.nuget\\packages\\",
+      "outputPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\FLAVIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Liquid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://nuget.org/api/v2": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

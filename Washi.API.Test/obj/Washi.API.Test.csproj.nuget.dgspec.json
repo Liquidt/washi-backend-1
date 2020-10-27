@@ -1,37 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RepositorioGitHub\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj": {}
+    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj": {}
   },
   "projects": {
-    "D:\\RepositorioGitHub\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj": {
+    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RepositorioGitHub\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj",
+        "projectUniqueName": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj",
         "projectName": "Washi.API.Test",
-        "projectPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj",
-        "packagesPath": "C:\\Users\\FLAVIO\\.nuget\\packages\\",
-        "outputPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API.Test\\obj\\",
+        "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj",
+        "packagesPath": "C:\\Users\\Liquid\\.nuget\\packages\\",
+        "outputPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\FLAVIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Liquid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://nuget.org/api/v2": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj": {
-                "projectPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj"
+              "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj": {
+                "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj"
               }
             }
           }
@@ -104,28 +106,30 @@
         }
       }
     },
-    "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj": {
+    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
+        "projectUniqueName": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
         "projectName": "Washi.API",
-        "projectPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
-        "packagesPath": "C:\\Users\\FLAVIO\\.nuget\\packages\\",
-        "outputPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\obj\\",
+        "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
+        "packagesPath": "C:\\Users\\Liquid\\.nuget\\packages\\",
+        "outputPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\FLAVIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Liquid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://nuget.org/api/v2": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
