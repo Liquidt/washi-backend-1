@@ -6,7 +6,7 @@ using Washi.API.Domain.Models;
 
 namespace Washi.API.Domain.Services
 {
-    interface ICurrencyService
+    public interface ICurrencyService
     {
         Task<Currency> GetByIdAsync(int id);
         Task<IEnumerable<Currency>> ListAsync();
