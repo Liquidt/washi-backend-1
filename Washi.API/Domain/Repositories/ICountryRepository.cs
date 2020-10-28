@@ -9,5 +9,6 @@ namespace Washi.API.Domain.Repositories
     public interface ICountryRepository
     {
         Task<IEnumerable<Country>> ListAsync();
+        Task<Country> FindById(int id);
     }
 }

@@ -27,6 +27,11 @@ namespace Washi.API.Persistence.Repositories
                  .ToListAsync();
         }
 
+        public async Task<IEnumerable<CountryCurrency>> ListAsync()
+        {
+            return await _context.CountryCurrencies.ToListAsync();
+        }
+
         public async Task<IEnumerable<CountryCurrency>> ListByCountryIdAsync(int countryId)
         {
             return await _context.CountryCurrencies

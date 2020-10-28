@@ -12,6 +12,12 @@ namespace Washi.API.Persistence.Repositories
     public class CountryRepository : BaseRepository, ICountryRepository
     {
         public CountryRepository(AppDbContext context) : base(context) { }
+
+        public async Task<Country> FindById(int id)
+        {
+            return await _context.Countries.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Country>> ListAsync()
         {
             return await _context.Countries.ToListAsync();

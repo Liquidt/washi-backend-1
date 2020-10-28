@@ -8,6 +8,7 @@ namespace Washi.API.Domain.Services
 {
     interface ICurrencyService
     {
+        Task<Currency> GetByIdAsync(int id);
         Task<IEnumerable<Currency>> ListAsync();
         Task<IEnumerable<Currency>> ListByCountryIdAsync(int countryId);
     }

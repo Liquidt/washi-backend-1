@@ -9,5 +9,6 @@ namespace Washi.API.Domain.Repositories
     public interface ICurrencyRepository
     {
         Task<IEnumerable<Currency>> ListAsync();
+        Task<Currency> FindById(int id);
     }
 }
