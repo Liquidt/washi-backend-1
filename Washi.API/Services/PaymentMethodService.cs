@@ -14,13 +14,6 @@ namespace Washi.API.Services
     {
         private readonly IPaymentMethodRepository _paymentMethodRepository;
         private readonly IUnitOfWork _unitOfWork;
-<<<<<<< HEAD
-
-        public PaymentMethodService(IPaymentMethodRepository paymentMethodRepository, IUnitOfWork unitOfWork)
-        {
-            _paymentMethodRepository = paymentMethodRepository;
-            _unitOfWork = unitOfWork;
-=======
         private readonly IUserPaymentMethodRepository _userPaymentMethodRepository;
 
         public PaymentMethodService(IPaymentMethodRepository paymentMethodRepository, IUnitOfWork unitOfWork, IUserPaymentMethodRepository userPaymentMethodRepository)
@@ -28,7 +21,6 @@ namespace Washi.API.Services
             _paymentMethodRepository = paymentMethodRepository;
             _unitOfWork = unitOfWork;
             _userPaymentMethodRepository = userPaymentMethodRepository;
->>>>>>> feature-user
         }
 
         public async Task<PaymentMethodResponse> DeleteAsync(int id)
@@ -62,8 +54,6 @@ namespace Washi.API.Services
             return await _paymentMethodRepository.ListAsync();
         }
 
-<<<<<<< HEAD
-=======
         public async Task<IEnumerable<PaymentMethod>> ListByUserIdAsync(int userId)
         {
             var userPaymentMethods = await _userPaymentMethodRepository.ListByUserIdAsync(userId);
@@ -71,7 +61,6 @@ namespace Washi.API.Services
             return paymentMethods;
         }
 
->>>>>>> feature-user
         public async Task<PaymentMethodResponse> SaveAsync(PaymentMethod paymentMethod)
         {
             try

@@ -10,10 +10,7 @@ namespace Washi.API.Domain.Services
     public interface IPaymentMethodService
     {
         Task<IEnumerable<PaymentMethod>> ListAsync();
-<<<<<<< HEAD
-=======
         Task<IEnumerable<PaymentMethod>> ListByUserIdAsync(int userId);
->>>>>>> feature-user
         Task<PaymentMethodResponse> GetByIdAsync(int id);
         Task<PaymentMethodResponse> SaveAsync(PaymentMethod paymentMethod);
         Task<PaymentMethodResponse> UpdateAsync(int id, PaymentMethod paymentMethod);

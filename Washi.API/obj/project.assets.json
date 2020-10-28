@@ -6826,23 +6826,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FLAVIO\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ivanl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
+      "projectUniqueName": "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
       "projectName": "Washi.API",
-      "projectPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
-      "packagesPath": "C:\\Users\\FLAVIO\\.nuget\\packages\\",
-      "outputPath": "D:\\RepositorioGitHub\\washi-backend\\Washi.API\\obj\\",
+      "projectPath": "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
+      "packagesPath": "C:\\Users\\ivanl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\FLAVIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ivanl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
