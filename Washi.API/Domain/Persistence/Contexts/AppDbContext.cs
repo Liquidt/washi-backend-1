@@ -16,7 +16,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<Service> Services { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
-
+        public DbSet<ServiceMaterial> ServiceMaterials { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -111,7 +111,25 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new Material { Id = 101, Name = "Secador"}
                 );
 
+            //ServiceMaterial Entity
+            builder.Entity<ServiceMaterial>().ToTable("ServiceMaterials");
+            builder.Entity<ServiceMaterial>().HasKey(p => new { p.MaterialId, p.ServiceId });
+            builder.Entity<ServiceMaterial>().Property(p => p.Name).IsRequired().HasMaxLength(150);
+            builder.Entity<ServiceMaterial>()
+                .HasOne(p => p.Material)
+                .WithMany(p => p.ServiceMaterials)
+                .HasForeignKey(p => p.MaterialId);
+            builder.Entity<ServiceMaterial>()
+                .HasOne(p => p.Service)
+                .WithMany(p => p.ServiceMaterials)
+                .HasForeignKey(p => p.ServiceId);
+            builder.Entity<ServiceMaterial>().HasData
+                (
+                    new ServiceMaterial { Name = "Lavado con lavadora al seco" },
+                    new ServiceMaterial { Name = "Planchado con plancha fria" }
+                );
 
+            //SnakeCase convention apply
             ApplySnakeCaseNamingConvention(builder);
         }
 

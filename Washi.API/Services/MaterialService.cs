@@ -13,6 +13,7 @@ namespace Washi.API.Services
     {
         private readonly IMaterialRepository _materialRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IServiceMaterialRepository _serviceMaterialRepository;
 
         public MaterialService(IMaterialRepository materialRepository, IUnitOfWork unitOfWork)
         {
@@ -48,6 +49,13 @@ namespace Washi.API.Services
         public async Task<IEnumerable<Material>> ListAsync()
         {
             return await _materialRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Material>> ListByServiceIdAsync(int serviceId)
+        {
+            var serviceMaterials = await _serviceMaterialRepository.ListByServiceIdAsync(serviceId);
+            var materials = serviceMaterials.Select(p => p.Material).ToList();
+            return materials;
         }
 
         public async Task<MaterialResponse> SaveAsync(Material material)
