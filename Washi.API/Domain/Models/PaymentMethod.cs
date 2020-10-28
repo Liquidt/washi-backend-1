@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Washi.API.Domain.Models
 {
-    public class User
+    public class PaymentMethod
     {
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public UserProfile UserProfile { get; set; }
+        public string Name { get; set; }
         public List<UserPaymentMethod> UserPaymentMethods { get; set; }
     }
 }
