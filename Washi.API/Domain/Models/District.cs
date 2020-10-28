@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 
 namespace Washi.API.Domain.Models
 {
-    public class Department
+    public class District
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Country Country { get; set; }
-        public int CountryId { get; set; }
-        public IList<District> Districts { get; set; }
+
+        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
+
+        public IList<UserProfile> UserProfiles { get; set; } = new List<UserProfile>();
     }
 }

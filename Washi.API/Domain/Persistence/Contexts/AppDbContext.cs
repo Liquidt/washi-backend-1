@@ -17,6 +17,8 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryCurrency> CountryCurrencies { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet <District> Districts { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -94,6 +96,42 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new Country { Id = 1, Name = "Perú" },
                     new Country { Id = 2, Name = "Estados Unidos" }
                 );
+            //Department Entity
+            builder.Entity<Department>().ToTable("Departments");
+            builder.Entity<Department>().HasKey(c => c.Id);
+            builder.Entity<Department>().Property(c => c.Id)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+            builder.Entity<Department>().Property(c => c.Name)
+                .IsRequired();
+            builder.Entity<Department>().HasMany(p => p.Districts)
+                                        .WithOne(p => p.Department)
+                                        .HasForeignKey(p => p.DepartmentId);
+            builder.Entity<Department>().HasData
+                (
+                    new Department { Id = 1, Name = "Lima" },
+                    new Department { Id = 2, Name = "La Libertad" }
+                );
+            //District Entity
+            builder.Entity<District>().ToTable("Districts");
+            builder.Entity<District>().HasKey(d => d.Id);
+            builder.Entity<District>().Property(d => d.Id)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+            builder.Entity<District>().Property(d => d.Name)
+                .IsRequired();
+            builder.Entity<District>().HasMany(p => p.UserProfiles)
+                                      .WithOne(p => p.District)
+                                      .HasForeignKey(p => p.DistrictId);
+            builder.Entity<District>().HasData
+                (
+                    new District { Id = 1, Name = "Miraflores" },
+                    new District { Id = 2, Name = "Barranco" },
+                    new District { Id = 3, Name = "San Isidro" },
+                    new District { Id = 4, Name = "Chaclacayo" }
+                );
+
+
         }
 
         private void ApplySnakeCaseNamingConvention(ModelBuilder builder)
