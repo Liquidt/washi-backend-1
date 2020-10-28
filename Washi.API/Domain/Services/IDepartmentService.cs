@@ -6,7 +6,7 @@ using Washi.API.Domain.Models;
 
 namespace Washi.API.Domain.Services
 {
-    interface IDepartmentService
+    public interface IDepartmentService
     {
         Task<IEnumerable<Department>> ListByCountryIdAsync(int countryId);
         Task<IEnumerable<Department>> ListAsync();

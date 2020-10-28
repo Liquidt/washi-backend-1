@@ -6,7 +6,7 @@ using Washi.API.Domain.Models;
 
 namespace Washi.API.Domain.Services
 {
-    interface IDistrictService
+    public interface IDistrictService
     {
         Task<IEnumerable<District>> ListByDepartmentIdAsync(int departmentId);
         Task<IEnumerable<District>> ListAll();
