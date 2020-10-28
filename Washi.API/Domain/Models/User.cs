@@ -11,5 +11,6 @@ namespace Washi.API.Domain.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public UserProfile UserProfile { get; set; }
+        public List<UserPaymentMethod> UserPaymentMethods { get; set; }
     }
 }

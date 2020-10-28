@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Washi.API.Domain.Models;
 using Washi.API.Extensions;
@@ -12,9 +11,13 @@ namespace Washi.API.Domain.Persistence.Contexts
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+<<<<<<< Updated upstream
+=======
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<UserPaymentMethod> UserPaymentMethods { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Material> Materials { get; set; }
+>>>>>>> Stashed changes
         public DbSet<UserProfile> UserProfiles { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -61,19 +64,37 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Chiclayo", PhoneNumber = 987654321, UserType = EUserType.Washer },
                     new UserProfile { Id = 2, UserId = 2, CorporationName = "Xavistian Inc", Address = "Watchflowers", PhoneNumber = 999888777, UserType = EUserType.Laundry }
                 );
+<<<<<<< Updated upstream
+=======
             // PaymentMethod Entity
-            builder.Entity<PaymentMethod>().ToTable("PaymentMethod");
+            builder.Entity<PaymentMethod>().ToTable("PaymentMethods");
             builder.Entity<PaymentMethod>().HasKey(p => p.Id);
             builder.Entity<PaymentMethod>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<PaymentMethod>().Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Entity<PaymentMethod>().HasData
                 (
-                    new PaymentMethod { Id = 67, Name = "TarjetaDeRegalo"},
-                    new PaymentMethod { Id = 68, Name = "TarjetaConeyPark" }
+                    new PaymentMethod { Id = 1, Name = "TarjetaDeRegalo"},
+                    new PaymentMethod { Id = 2, Name = "TarjetaConeyPark" }
                 );
 
+            // UserPaymentMethod Entity
+            builder.Entity<UserPaymentMethod>().ToTable("UserPaymentMethods");
+            builder.Entity<UserPaymentMethod>()
+                .HasKey(p => new { p.UserId, p.PaymentMethodId });
+
+            builder.Entity<UserPaymentMethod>()
+                .HasOne(p => p.User)
+                .WithMany(p => p.UserPaymentMethods)
+                .HasForeignKey(p => p.UserId);
+
+            builder.Entity<UserPaymentMethod>()
+                .HasOne(p => p.PaymentMethod)
+                .WithMany(p => p.UserPaymentMethods)
+                .HasForeignKey(p => p.PaymentMethodId);
+                
+
             // Service Entity
-            builder.Entity<Service>().ToTable("Service");
+            builder.Entity<Service>().ToTable("Services");
             builder.Entity<Service>().HasKey(p => p.Id);
             builder.Entity<Service>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Service>().Property(p => p.Name).IsRequired().HasMaxLength(50);
@@ -84,7 +105,7 @@ namespace Washi.API.Domain.Persistence.Contexts
                 );
 
             //Material Entity
-            builder.Entity<Material>().ToTable("Material");
+            builder.Entity<Material>().ToTable("Materials");
             builder.Entity<Material>().HasKey(p => p.Id);
             builder.Entity<Material>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Material>().Property(p => p.Name).IsRequired().HasMaxLength(50);
@@ -93,6 +114,7 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new Material { Id = 100, Name = "Plancha"},
                     new Material { Id = 101, Name = "Secador"}
                 );
+>>>>>>> Stashed changes
 
             ApplySnakeCaseNamingConvention(builder);
         }
