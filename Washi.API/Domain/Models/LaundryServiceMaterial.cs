@@ -7,7 +7,7 @@ namespace Washi.API.Domain.Models
 {
     public class LaundryServiceMaterial
     {
-        public float Id { get; set; }
+        public int Id { get; set; }
         public float Price { get; set; }
         public string Description { get; set; }
         //public DateTime TimeEstimated { get; set; }

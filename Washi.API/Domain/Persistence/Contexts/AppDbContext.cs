@@ -17,6 +17,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<Material> Materials { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<ServiceMaterial> ServiceMaterials { get; set; }
+        public DbSet<LaundryServiceMaterial> LaundryServiceMaterials { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)

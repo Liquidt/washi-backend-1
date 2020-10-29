@@ -10,5 +10,8 @@ namespace Washi.API.Domain.Repositories
     {
         Task<IEnumerable<LaundryServiceMaterial>> ListAsync();
         Task<IEnumerable<LaundryServiceMaterial>> ListByUserIdAsync(int userId);
+        Task AddAsync(LaundryServiceMaterial laundryServiceMaterial);
+        void Remove(LaundryServiceMaterial laundryServiceMaterial);
+        void Update(LaundryServiceMaterial laundryServiceMaterial);
     }
 }
