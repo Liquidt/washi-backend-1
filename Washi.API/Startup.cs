@@ -48,6 +48,8 @@ namespace Washi.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserProfileRepository, UserProfileRepository>();
             services.AddScoped<IUserPaymentMethodRepository, UserPaymentMethodRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<IUserSubscriptionRepository, UserSubscriptionRepository>();
 
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
@@ -56,6 +58,8 @@ namespace Washi.API
             services.AddScoped<IMaterialService, MaterialService>();
             services.AddScoped<IUserProfileService, UserProfileService>();
             services.AddScoped<IUserPaymentMethodService, UserPaymentMethodService>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<IUserSubscriptionService, UserSubscriptionService>();
 
             //Mapper
             services.AddAutoMapper(typeof(Startup));

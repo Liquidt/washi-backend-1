@@ -16,6 +16,8 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<Service> Services { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<UserSubscription> UserSubscriptions { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -87,7 +89,36 @@ namespace Washi.API.Domain.Persistence.Contexts
                 .HasOne(p => p.PaymentMethod)
                 .WithMany(p => p.UserPaymentMethods)
                 .HasForeignKey(p => p.PaymentMethodId);
-                
+
+            // Subscription Entity
+            builder.Entity<Subscription>().ToTable("Subscriptions");
+            builder.Entity<Subscription>().HasKey(p => p.Id);
+            builder.Entity<Subscription>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Subscription>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Subscription>().Property(p => p.Price).IsRequired();
+            builder.Entity<Subscription>().Property(p => p.DurationInDays).IsRequired();
+            builder.Entity<Subscription>().HasData
+                (
+                    new Subscription { Id = 1, Name = "WasherPremium 1 mes", Price = Convert.ToDecimal(15.00), DurationInDays = 30 },
+                    new Subscription { Id = 2, Name = "WasherPremium 3 meses", Price = Convert.ToDecimal(40.00), DurationInDays = 90 },
+                    new Subscription { Id = 3, Name = "LaundryPremium 1 mes", Price = Convert.ToDecimal(100.00), DurationInDays = 30 },
+                    new Subscription { Id = 4, Name = "LaundryPremium 3 meses", Price = Convert.ToDecimal(280.00), DurationInDays = 90 }
+                );
+
+            //UserSubscription Entity
+            builder.Entity<UserSubscription>().ToTable("UserSubscriptions");
+            builder.Entity<UserSubscription>()
+                .HasKey(p => new { p.UserId, p.SubscriptionId });
+
+            builder.Entity<UserSubscription>()
+                .HasOne(p => p.User)
+                .WithMany(p => p.UserSubscriptions)
+                .HasForeignKey(p => p.UserId);
+
+            builder.Entity<UserSubscription>()
+                .HasOne(p => p.Subscription)
+                .WithMany(p => p.UserSubscriptions)
+                .HasForeignKey(p => p.SubscriptionId);
 
             // Service Entity
             builder.Entity<Service>().ToTable("Services");

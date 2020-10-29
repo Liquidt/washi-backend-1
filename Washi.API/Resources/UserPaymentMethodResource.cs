@@ -8,6 +8,6 @@ namespace Washi.API.Resources
     public class UserPaymentMethodResource
     {
         public int UserId { get; set; }
-        public int PlanId { get; set; }
+        public int PaymentMethodId { get; set; }
     }
 }
