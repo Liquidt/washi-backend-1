@@ -20,5 +20,7 @@ namespace Washi.API.Domain.Models
         public string CorporationName { get; set; }
         public EUserType UserType { get; set; }
         //TODO: DistrictId, District
+        public District District { get; set; }
+        public int DistrictId { get; set; }
     }
 }
