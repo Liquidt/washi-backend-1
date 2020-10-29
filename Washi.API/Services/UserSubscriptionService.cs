@@ -19,7 +19,18 @@ namespace Washi.API.Services
             _userSubscriptionRepository = userSubscriptionRepository;
             _unitOfWork = unitOfWork;
         }
-
+        public async Task<UserSubscriptionResponse> SaveAsync(UserSubscription userSubscription)
+        {
+            try
+            {
+                await _userSubscriptionRepository.AddAsync(userSubscription);
+                return new UserSubscriptionResponse(userSubscription);
+            }
+            catch (Exception ex)
+            {
+                return new UserSubscriptionResponse($"An error ocurred while adding User paymentMethod: {ex.Message}");
+            }
+        }
         public async Task<UserSubscriptionResponse> AssignUserSubscriptionAsync(int userId, int subscriptionId)
         {
             try
