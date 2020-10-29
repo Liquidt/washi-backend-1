@@ -35,6 +35,14 @@ namespace Washi.API.Services
             }
         }
 
+        public async Task<ServiceMaterialResponse> GetByServiceIdAndMaterialIdAsync(int serviceId,int materialId)
+        {
+            var existingServiceMaterial = await _serviceMaterialRepository.FindByServiceIdAndByMaterialId(serviceId,materialId);
+            if (existingServiceMaterial == null)
+                return new ServiceMaterialResponse("Service Material not found");
+            return new ServiceMaterialResponse(existingServiceMaterial);
+        }
+
         public async Task<IEnumerable<ServiceMaterial>> ListAsync()
         {
             return await _serviceMaterialRepository.ListAsync();

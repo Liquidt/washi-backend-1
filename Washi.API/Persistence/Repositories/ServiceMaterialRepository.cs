@@ -30,6 +30,11 @@ namespace Washi.API.Persistence.Repositories
             }
         }
 
+        public async Task<ServiceMaterial> FindByIdAsync(int id)
+        {
+            return await _context.ServiceMaterials.FindAsync(id);
+        }
+
         public async Task<ServiceMaterial> FindByServiceIdAndByMaterialId(int serviceId, int materialId)
         {
             return await _context.ServiceMaterials.FindAsync(serviceId, materialId);

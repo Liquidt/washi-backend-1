@@ -17,7 +17,7 @@ namespace Washi.API.Mapping
             CreateMap<SaveServiceResource, Service>();
             CreateMap<SaveMaterialResource, Material>();
             CreateMap<SaveUserProfileResource, UserProfile>();
-            CreateMap<SaveServiceMaterial, ServiceMaterial>();
+            CreateMap<SaveServiceMaterialResource, ServiceMaterial>();
         }
     }
 }

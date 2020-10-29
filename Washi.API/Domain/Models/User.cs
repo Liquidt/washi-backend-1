@@ -12,5 +12,6 @@ namespace Washi.API.Domain.Models
         public string Password { get; set; }
         public UserProfile UserProfile { get; set; }
         public List<UserPaymentMethod> UserPaymentMethods { get; set; }
+        public List<LaundryServiceMaterial> LaundryServiceMaterials { get; set; }
     }
 }

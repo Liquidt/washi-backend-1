@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Washi.API.Resources
 {
-    public class SaveServiceMaterial
+    public class SaveServiceMaterialResource
     {
         [Required]
         [MaxLength(150)]

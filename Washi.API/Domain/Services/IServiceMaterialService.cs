@@ -10,6 +10,7 @@ namespace Washi.API.Domain.Services
     public interface IServiceMaterialService
     {
         Task<IEnumerable<ServiceMaterial>> ListAsync();
+        Task<ServiceMaterialResponse> GetByServiceIdAndMaterialIdAsync(int serviceId, int materialId);
         Task<IEnumerable<ServiceMaterial>> ListByServiceIdAsync(int serviceId);
         Task<IEnumerable<ServiceMaterial>> ListByMaterialIdAsync(int materialId);
         Task<ServiceMaterialResponse> AssignServiceMaterialAsync(int serviceId, int materialId, string name);

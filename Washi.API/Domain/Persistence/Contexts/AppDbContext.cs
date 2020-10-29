@@ -113,7 +113,8 @@ namespace Washi.API.Domain.Persistence.Contexts
 
             //ServiceMaterial Entity
             builder.Entity<ServiceMaterial>().ToTable("ServiceMaterials");
-            builder.Entity<ServiceMaterial>().HasKey(p => new { p.MaterialId, p.ServiceId });
+            builder.Entity<ServiceMaterial>().HasKey(p => p.Id);
+            builder.Entity<ServiceMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<ServiceMaterial>().Property(p => p.Name).IsRequired().HasMaxLength(150);
             builder.Entity<ServiceMaterial>()
                 .HasOne(p => p.Material)
@@ -125,9 +126,32 @@ namespace Washi.API.Domain.Persistence.Contexts
                 .HasForeignKey(p => p.ServiceId);
             builder.Entity<ServiceMaterial>().HasData
                 (
-                    new ServiceMaterial { Name = "Lavado con lavadora al seco" },
-                    new ServiceMaterial { Name = "Planchado con plancha fria" }
+                    new ServiceMaterial { Id= 100, Name = "Lavado con lavadora al seco" },
+                    new ServiceMaterial { Id= 101, Name = "Planchado con plancha fria" }
                 );
+
+            //LaundryServiceMaterial Entity
+            builder.Entity<LaundryServiceMaterial>().ToTable("LaundryServiceMaterials");
+            builder.Entity<LaundryServiceMaterial>().HasKey(p => p.Id);
+            builder.Entity<LaundryServiceMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<LaundryServiceMaterial>().Property(p => p.Description).IsRequired().HasMaxLength(250);
+            builder.Entity<LaundryServiceMaterial>().Property(p => p.Price).IsRequired();
+            builder.Entity<LaundryServiceMaterial>().Property(p => p.Rating).IsRequired();
+            builder.Entity<LaundryServiceMaterial>().Property(p => p.Discount);
+            builder.Entity<LaundryServiceMaterial>()
+                .HasOne(p => p.User)
+                .WithMany(p => p.LaundryServiceMaterials)
+                .HasForeignKey(p => p.UserId);
+            builder.Entity<LaundryServiceMaterial>()
+                .HasOne(p => p.ServiceMaterial)
+                .WithMany(p => p.LaundryServiceMaterials)
+                .HasForeignKey(p => p.ServiceMaterialId);
+            builder.Entity<LaundryServiceMaterial>().HasData
+                (
+                    new LaundryServiceMaterial { Id = 100, Description = "Lavado con lavadora al seco al estilo de lavanderia pepito", Price=100.5F, Rating=5},
+                    new LaundryServiceMaterial { Id = 101, Description = "Planchado con plancha fria al estilo lavanderia pepito", Price = 100.5F, Rating = 5 }
+                );
+
 
             //SnakeCase convention apply
             ApplySnakeCaseNamingConvention(builder);

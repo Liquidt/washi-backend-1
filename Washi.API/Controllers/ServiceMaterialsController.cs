@@ -33,6 +33,15 @@ namespace Washi.API.Controllers
             return resources;
         }
 
+        [HttpGet("{materialId}")]
+        public async Task<ServiceMaterialResource> GetByServiceIdAndMaterialIdAsync(int serviceId, int materialId)
+        {
+            var serviceMaterial = await _serviceMaterialService.GetByServiceIdAndMaterialIdAsync(serviceId,materialId);
+            var resource = _mapper
+                .Map<ServiceMaterial, ServiceMaterialResource>(serviceMaterial.Resource);
+            return resource;
+        }
+
         [HttpPost("{materialId}")]
         public async Task<IActionResult> AssignServiceMaterial(int serviceId, int materialId, [FromBody] string name)
         {

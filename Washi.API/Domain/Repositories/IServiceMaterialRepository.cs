@@ -11,6 +11,7 @@ namespace Washi.API.Domain.Repositories
         Task<IEnumerable<ServiceMaterial>> ListAsync();
         Task<IEnumerable<ServiceMaterial>> ListByServiceIdAsync(int serviceId);
         Task<IEnumerable<ServiceMaterial>> ListByMaterialIdAsync(int materialId);
+        Task<ServiceMaterial> FindByIdAsync(int id);
         Task<ServiceMaterial> FindByServiceIdAndByMaterialId(int serviceId, int materialId);
         Task AddAsync(ServiceMaterial serviceMaterial);
         void Remove(ServiceMaterial serviceMaterial);
