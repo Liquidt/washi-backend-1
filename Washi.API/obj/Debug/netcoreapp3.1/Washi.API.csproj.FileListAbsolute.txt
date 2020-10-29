@@ -190,3 +190,4 @@ D:\UPC\Ciclo 6\Complejidad\TP\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Wa
 D:\UPC\Ciclo 6\Complejidad\TP\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\staticwebassets\Washi.API.StaticWebAssets.Manifest.cache
 D:\UPC\Ciclo 6\Complejidad\TP\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\staticwebassets\Washi.API.StaticWebAssets.xml
 D:\UPC\Ciclo 6\Complejidad\TP\washi-backend\Washi.API\obj\Debug\netcoreapp3.1\Washi.API.genruntimeconfig.cache
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\washiperu - Web Deploy\profile.arm.json

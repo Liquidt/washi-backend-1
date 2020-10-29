@@ -6,5 +6,6 @@
   <PropertyGroup>
     <ActiveDebugProfile>Washi.API</ActiveDebugProfile>
     <ShowAllFiles>true</ShowAllFiles>
+    <NameOfLastUsedPublishProfile>washiperu - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

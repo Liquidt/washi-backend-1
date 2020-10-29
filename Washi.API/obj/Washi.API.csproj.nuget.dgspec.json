@@ -1,33 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj": {}
+    "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\Washi.API.csproj": {}
   },
   "projects": {
-    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj": {
+    "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\Washi.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
+        "projectUniqueName": "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
         "projectName": "Washi.API",
-        "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
-        "packagesPath": "C:\\Users\\Liquid\\.nuget\\packages\\",
-        "outputPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\obj\\",
+        "projectPath": "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\Washi.API.csproj",
+        "packagesPath": "C:\\Users\\ivanl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ivanl\\Documents\\GitHub\\washi-backend\\Washi.API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Liquid\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ivanl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://nuget.org/api/v2": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {

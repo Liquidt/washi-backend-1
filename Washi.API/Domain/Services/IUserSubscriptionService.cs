@@ -12,6 +12,7 @@ namespace Washi.API.Domain.Services
         Task<IEnumerable<UserSubscription>> ListAsync();
         Task<IEnumerable<UserSubscription>> ListByUserIdAsync(int userId);
         Task<IEnumerable<UserSubscription>> ListBySubscriptionIdAsync(int subscriptionId);
+        Task<UserSubscriptionResponse> SaveAsync(UserSubscription userSubscription);
         Task<UserSubscriptionResponse> AssignUserSubscriptionAsync(int userId, int subscriptionId);
         Task<UserSubscriptionResponse> UnassignUserSubscriptionAsync(int userId, int subscriptionId);
     }
