@@ -20,6 +20,7 @@ namespace Washi.API.Controllers
         {
             _countryService = countryService;
             _mapper = mapper;
+            string Test = "Julio Profe";
         }
 
         [HttpGet]
