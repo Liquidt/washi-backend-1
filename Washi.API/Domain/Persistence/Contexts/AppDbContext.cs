@@ -109,8 +109,8 @@ namespace Washi.API.Domain.Persistence.Contexts
                                         .HasForeignKey(p => p.DepartmentId);
             builder.Entity<Department>().HasData
                 (
-                    new Department { Id = 1, Name = "Lima" },
-                    new Department { Id = 2, Name = "La Libertad" }
+                    new Department { Id = 1, Name = "Lima", CountryId=1},
+                    new Department { Id = 2, Name = "La Libertad" , CountryId=1}
                 );
             //District Entity
             builder.Entity<District>().ToTable("Districts");
@@ -125,10 +125,11 @@ namespace Washi.API.Domain.Persistence.Contexts
                                       .HasForeignKey(p => p.DistrictId);
             builder.Entity<District>().HasData
                 (
-                    new District { Id = 1, Name = "Miraflores" },
-                    new District { Id = 2, Name = "Barranco" },
-                    new District { Id = 3, Name = "San Isidro" },
-                    new District { Id = 4, Name = "Chaclacayo" }
+                    new District { Id = 1, Name = "Miraflores",DepartmentId=1 },
+                    new District { Id = 2, Name = "Barranco",DepartmentId=1 },
+                    new District { Id = 3, Name = "San Isidro",DepartmentId=1 },
+                    new District { Id = 4, Name = "Chaclacayo",DepartmentId=1 },
+                    new District { Id = 5, Name = "Chiclayo", DepartmentId = 2 }
                 );
 
 
