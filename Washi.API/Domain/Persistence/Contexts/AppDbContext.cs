@@ -63,12 +63,12 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<UserProfile>().Property(p => p.CorporationName);
             builder.Entity<UserProfile>().Property(p => p.UserType).IsRequired();
 
-            /*builder.Entity<UserProfile>().HasData
+            builder.Entity<UserProfile>().HasData
                 (
                     new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Chiclayo", PhoneNumber = 987654321, UserType = EUserType.Washer },
                     new UserProfile { Id = 2, UserId = 2, CorporationName = "Xavistian Inc", Address = "Watchflowers", PhoneNumber = 999888777, UserType = EUserType.Laundry }
                 );
-            */
+            
 
             // PaymentMethod Entity
             builder.Entity<PaymentMethod>().ToTable("PaymentMethods");
