@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,23 +12,23 @@ using Washi.API.Resources;
 namespace Washi.API.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("/api/[controller]")]
-    public class CountriesController:Controller
+    public class CurrenciesController:Controller
     {
-        private readonly ICountryService _countryService;
+        private readonly ICurrencyService _currencyService;
         private readonly IMapper _mapper;
 
-        public CountriesController(ICountryService countryService, IMapper mapper)
+        public CurrenciesController(ICurrencyService currencyService, IMapper mapper)
         {
-            _countryService = countryService;
+            _currencyService = currencyService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CountryResource>> GetAllAsync()
+        public async Task<IEnumerable<CurrencyResource>> GetAllAsync()
         {
-            var countries = await _countryService.ListAsync();
+            var currencies = await _currencyService.ListAsync();
             var resources = _mapper
-                .Map<IEnumerable<Country>, IEnumerable<CountryResource>>(countries);
+                .Map<IEnumerable<Currency>, IEnumerable<CurrencyResource>>(currencies);
             return resources;
         }
     }

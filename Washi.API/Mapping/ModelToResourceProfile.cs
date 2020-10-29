@@ -17,6 +17,11 @@ namespace Washi.API.Mapping
             CreateMap<Service, ServiceResource>();
             CreateMap<Material, MaterialResource>();
             CreateMap<UserProfile, UserProfileResource>();
+            CreateMap<Country, CountryResource>();
+            CreateMap<District, DistrictResource>();
+            CreateMap<Department, DepartmentResource>();
+            CreateMap<Currency, CurrencyResource>();
+            CreateMap<CountryCurrency, CountryCurrencyResource>();
         }
     }
 }
