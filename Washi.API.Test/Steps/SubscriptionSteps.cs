@@ -26,36 +26,6 @@ namespace Washi.API.Test.Steps
             await userSubscriptionService.SaveAsync(userSubscription);
         }
 
-        [Given(@"The user has already bought a subscription")]
-        public async void GivenTheUserHasAlreadyBoughtASubscription()
-        {
-            CrearDatos();
-            IEnumerable<UserSubscription> lista = await userSubscriptionService.ListByUserIdAsync(user.Id);
-            if (lista.Last().EndingDate >= DateTime.Now)
-                tiene = true;
-            else
-                tiene = false;
-        }
-
-        [When(@"Trying to adquire another")]
-        public async void WhenTryingToAdquireAnother()
-        {
-            if (!tiene)
-            {
-               UserSubscription userSubscription2 = new UserSubscription { UserId = 1000, SubscriptionId = 1000, InitialDate = DateTime.Now, EndingDate = new DateTime(2020, 12, 11) };
-                await userSubscriptionService.SaveAsync(userSubscription2);
-            }
-        }
-        
-
-        [Then(@"The system tells the user, he/she has one active")]
-        public void ThenTheSystemTellsTheUserHeSheHasOneActive()
-        {
-            Assert.That(userSubscriptionService.ListByUserIdAsync(user.Id).Result.ToList().Count == 1);
-        }
-
-
-
         [Given(@"The user has not bought any subscription")]
         public async void GivenTheUserHasNotBoughtAnySubscription()
         {

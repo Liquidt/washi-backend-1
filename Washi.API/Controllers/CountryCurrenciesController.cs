@@ -10,6 +10,7 @@ using Washi.API.Resources;
 
 namespace Washi.API.Controllers
 {
+
     [Route("/api/countries/{countryId}/currencies")]
     public class CountryCurrenciesController:Controller
     {

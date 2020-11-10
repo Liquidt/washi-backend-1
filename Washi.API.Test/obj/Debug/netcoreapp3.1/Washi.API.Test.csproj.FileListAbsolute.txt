@@ -150,3 +150,4 @@ C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API.Test\bin\Debug\netcoreap
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API.Test\obj\Debug\netcoreapp3.1\Washi.API.Test.csproj.CoreCompileInputs.cache
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API.Test\obj\Debug\netcoreapp3.1\Washi.API.Test.dll
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API.Test\obj\Debug\netcoreapp3.1\Washi.API.Test.pdb
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API.Test\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\washiperu - Web Deploy\profile.arm.json

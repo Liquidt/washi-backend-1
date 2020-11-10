@@ -4,10 +4,7 @@
 	I want to be a Washi subscriber
 
 @subscription
-Scenario: User got a subscription
-	Given The user has already bought a subscription
-	When Trying to adquire another
-	Then The system tells the user, he/she has one active
+
 
 Scenario: User does not have a subscription
 	Given The user has not bought any subscription
