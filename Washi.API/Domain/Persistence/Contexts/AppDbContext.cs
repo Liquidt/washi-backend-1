@@ -15,6 +15,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<UserPaymentMethod> UserPaymentMethods { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<ServiceMaterial> ServiceMaterials { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<UserSubscription> UserSubscriptions { get; set; }
@@ -44,7 +45,11 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<User>().HasData
                 (
                     new User { Id = 1, Email = "felipedota2@gmail.com", Password = "slark" },
-                    new User { Id = 2, Email = "xavistian@gmail.com", Password = "tiaaaaaaaan" }
+                    new User { Id = 2, Email = "xavistian@gmail.com", Password = "tiaaaaaaaan" },
+                    new User { Id = 3, Email = "bergazo@gmail.com", Password = "mdemarcio" },
+                    new User { Id = 4, Email = "citrionix4004@gmail.com", Password = "william" },
+                    new User { Id = 5, Email = "navY@gmail.com", Password = "aasuuu" }
+
                 );
 
             //UserProfile Entity
@@ -62,11 +67,14 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<UserProfile>().Property(p => p.PhoneNumber).IsRequired();
             builder.Entity<UserProfile>().Property(p => p.CorporationName);
             builder.Entity<UserProfile>().Property(p => p.UserType).IsRequired();
-
+            builder.Entity<UserProfile>().Property(p => p.ImageUrl);
             builder.Entity<UserProfile>().HasData
                 (
-                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Chiclayo", PhoneNumber = 987654321, UserType = EUserType.Washer },
-                    new UserProfile { Id = 2, UserId = 2, CorporationName = "Xavistian Inc", Address = "Watchflowers", PhoneNumber = 999888777, UserType = EUserType.Laundry }
+                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Av. Chiclayo 343", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 01, 23), DateOfRegistry = DateTime.Now, DistrictId = 1 },
+                    new UserProfile { Id = 2, UserId = 2, CorporationName = "El Lavadín", Address = "Watchflowers 451", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 2 },
+                    new UserProfile { Id = 3, UserId = 3, FirstName = "Marcio", LastName = "Bergazo", Sex = ESex.Female, Address = "Magmalena 234", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 04, 26), DateOfRegistry = DateTime.Now, DistrictId = 3 },
+                    new UserProfile { Id = 4, UserId = 4, CorporationName = "Don Lavadón", Address = "Chiclayork 543", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 4 },
+                    new UserProfile { Id = 5, UserId = 5, FirstName = "Yivan", LastName = "Pérez", Sex = ESex.Female, Address = "Jesus María 854", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 07, 13), DateOfRegistry = DateTime.Now, DistrictId = 5 }
                 );
             
 
@@ -77,8 +85,9 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<PaymentMethod>().Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Entity<PaymentMethod>().HasData
                 (
-                    new PaymentMethod { Id = 1, Name = "TarjetaDeRegalo"},
-                    new PaymentMethod { Id = 2, Name = "TarjetaConeyPark" }
+                    new PaymentMethod { Id = 1, Name = "Tarjeta de regalo"},
+                    new PaymentMethod { Id = 2, Name = "Tarjeta Coney Park" },
+                    new PaymentMethod { Id = 3, Name = "Tarjeta BCP" }
                 );
 
             // UserPaymentMethod Entity
@@ -96,6 +105,15 @@ namespace Washi.API.Domain.Persistence.Contexts
                 .WithMany(p => p.UserPaymentMethods)
                 .HasForeignKey(p => p.PaymentMethodId);
 
+            builder.Entity<UserPaymentMethod>().HasData
+                (
+                new UserPaymentMethod { UserId = 1, PaymentMethodId = 1 },
+                new UserPaymentMethod { UserId = 2, PaymentMethodId = 2 },
+                new UserPaymentMethod { UserId = 3, PaymentMethodId = 3 },
+                new UserPaymentMethod { UserId = 4, PaymentMethodId = 3 },
+                new UserPaymentMethod { UserId = 5, PaymentMethodId = 2 }
+                );
+
             // Subscription Entity
             builder.Entity<Subscription>().ToTable("Subscriptions");
             builder.Entity<Subscription>().HasKey(p => p.Id);
@@ -109,6 +127,7 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new Subscription { Id = 2, Name = "WasherPremium 3 meses", Price = Convert.ToDecimal(40.00), DurationInDays = 90 },
                     new Subscription { Id = 3, Name = "LaundryPremium 1 mes", Price = Convert.ToDecimal(100.00), DurationInDays = 30 },
                     new Subscription { Id = 4, Name = "LaundryPremium 3 meses", Price = Convert.ToDecimal(280.00), DurationInDays = 90 }
+
                 );
 
             //UserSubscription Entity
@@ -125,6 +144,14 @@ namespace Washi.API.Domain.Persistence.Contexts
                 .HasOne(p => p.Subscription)
                 .WithMany(p => p.UserSubscriptions)
                 .HasForeignKey(p => p.SubscriptionId);
+            builder.Entity<UserSubscription>().HasData
+                (
+                new UserSubscription { UserId = 1, SubscriptionId = 1, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1)},
+                new UserSubscription { UserId = 2, SubscriptionId = 3, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1) },
+                new UserSubscription { UserId = 3, SubscriptionId = 2, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(3) },
+                new UserSubscription { UserId = 4, SubscriptionId = 4, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(3) },
+                new UserSubscription { UserId = 5, SubscriptionId = 1, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1) }
+                );
 
             // Service Entity
             builder.Entity<Service>().ToTable("Services");
@@ -133,8 +160,9 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<Service>().Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Entity<Service>().HasData
                 (
-                    new Service { Id = 100, Name = "LavadoalSeco" },
-                    new Service { Id = 101, Name = "Planchado" }
+                    new Service { Id = 1, Name = "Lavado al agua" },
+                    new Service { Id = 2, Name = "Lavado al seco" },
+                    new Service { Id = 3, Name = "Planchado" }
                 );
 
             //Material Entity
@@ -144,9 +172,28 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<Material>().Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Entity<Material>().HasData
                 (
-                    new Material { Id = 100, Name = "Plancha"},
-                    new Material { Id = 101, Name = "Secador"}
+                    new Material { Id = 1, Name = "Algodón"},
+                    new Material { Id = 2, Name = "Lino" },
+                    new Material { Id = 3, Name = "Poliéster" },
+                    new Material { Id = 4, Name = "Lana"},
+                    new Material { Id = 5, Name = "Seda" },
+                    new Material { Id = 6, Name = "Nylon" },
+                    new Material { Id = 7, Name = "Licra" }
                 );
+            //ServiceMaterial Entity
+            builder.Entity<ServiceMaterial>().ToTable("ServiceMaterials");
+            builder.Entity<ServiceMaterial>()
+                .HasKey(sm => new { sm.MaterialId, sm.ServiceId });
+
+            builder.Entity<ServiceMaterial>()
+                .HasOne(sm => sm.Service)
+                .WithMany(sm => sm.ServiceMaterials)
+                .HasForeignKey(sm => sm.ServiceId);
+
+            builder.Entity<ServiceMaterial>()
+                .HasOne(sm => sm.Material)
+                .WithMany(sm => sm.ServiceMaterials)
+                .HasForeignKey(sm => sm.MaterialId);
             //Currency Entity
             builder.Entity<Currency>().ToTable("Currencies");
             builder.Entity<Currency>().HasKey(c => c.Id);

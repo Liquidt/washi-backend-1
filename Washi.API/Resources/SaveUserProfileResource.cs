@@ -14,7 +14,7 @@ namespace Washi.API.Resources
         public string FirstName { get; set; }
         [MaxLength(40)]
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } = DateTime.Now;
         public string Sex { get; set; }
         public DateTime DateOfRegistry { get; set; } = DateTime.Now;
         [Required]

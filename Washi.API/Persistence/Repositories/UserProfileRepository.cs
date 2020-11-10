@@ -18,6 +18,11 @@ namespace Washi.API.Persistence.Repositories
             return await _context.UserProfiles.ToListAsync();
         }
 
+        public async Task<IEnumerable<UserProfile>> ListLaundriesAsync()
+        {
+            return await _context.UserProfiles.ToListAsync();
+        }
+
         public async Task AddAsync(UserProfile UserProfile)
         {
             await _context.UserProfiles.AddAsync(UserProfile);

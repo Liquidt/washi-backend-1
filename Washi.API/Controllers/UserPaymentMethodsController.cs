@@ -11,7 +11,7 @@ using Washi.API.Resources;
 
 namespace Washi.API.Controllers
 {
-    [Route("/api/user/{userId}/paymentmethods")]
+    [Route("/api/users/{userId}/paymentmethods")]
     public class UserPaymentMethodsController : Controller
     {
         private readonly IPaymentMethodService _paymentMethodService;

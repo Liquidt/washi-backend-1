@@ -24,6 +24,19 @@ namespace Washi.API.Services
         {
             return await _userProfileRepository.ListAsync();
         }
+        public async Task<IEnumerable<UserProfile>> ListLaundriesAsync()
+        {
+            var allProfiles = await _userProfileRepository.ListAsync();
+            var laundries = new List<UserProfile>();
+            foreach (var profile in allProfiles)
+            {   
+                if (profile.UserType==EUserType.Laundry)
+                {
+                    laundries.Add(profile);
+                }
+            }
+            return laundries;
+        }
 
         public async Task<UserProfileResponse> SaveAsync(UserProfile userProfile)
         {

@@ -29,6 +29,13 @@ namespace Washi.API.Controllers
             var resource = _mapper.Map<IEnumerable<UserProfile>, IEnumerable<UserProfileResource>>(userProfiles);
             return resource;
         }
+        [HttpGet("laundries")]
+        public async Task<IEnumerable<UserProfileResource>> GetLaundriesAsync()
+        {
+            var userProfiles = await _userProfileService.ListLaundriesAsync();
+            var resource = _mapper.Map<IEnumerable<UserProfile>, IEnumerable<UserProfileResource>>(userProfiles);
+            return resource;
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)

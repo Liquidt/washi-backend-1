@@ -9,6 +9,7 @@ namespace Washi.API.Domain.Repositories
     public interface IUserProfileRepository
     {
         Task<IEnumerable<UserProfile>> ListAsync();
+        Task<IEnumerable<UserProfile>> ListLaundriesAsync();
         Task AddAsync(UserProfile profile);
         Task<UserProfile> FindById(int id);
         void Update(UserProfile profile);

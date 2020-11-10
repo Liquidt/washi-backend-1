@@ -9,7 +9,7 @@ namespace Washi.API.Domain.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public List<ServiceMaterial>ServiceMaterials { get; set; }
         //possible TODO: Add Orders
     }
 }

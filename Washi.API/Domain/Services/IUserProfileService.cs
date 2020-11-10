@@ -11,6 +11,7 @@ namespace Washi.API.Domain.Services
     public interface IUserProfileService
     {
         Task<IEnumerable<UserProfile>> ListAsync();
+        Task<IEnumerable<UserProfile>> ListLaundriesAsync();
         Task<UserProfileResponse> FindById(int userProfileId);
         Task<UserProfileResponse> SaveAsync(UserProfile profile);
         Task<UserProfileResponse> UpdateAsync(int id, UserProfile profile);
