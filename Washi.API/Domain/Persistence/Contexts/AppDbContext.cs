@@ -162,7 +162,8 @@ namespace Washi.API.Domain.Persistence.Contexts
                 (
                     new Service { Id = 1, Name = "Lavado al agua" },
                     new Service { Id = 2, Name = "Lavado al seco" },
-                    new Service { Id = 3, Name = "Planchado" }
+                    new Service { Id = 3, Name = "Lavado a mano" },
+                    new Service { Id = 4, Name = "Planchado" }
                 );
 
             //Material Entity
@@ -194,6 +195,27 @@ namespace Washi.API.Domain.Persistence.Contexts
                 .HasOne(sm => sm.Material)
                 .WithMany(sm => sm.ServiceMaterials)
                 .HasForeignKey(sm => sm.MaterialId);
+            builder.Entity<ServiceMaterial>().HasData
+                (
+                    new ServiceMaterial { ServiceId = 1, MaterialId = 1 },
+                    new ServiceMaterial { ServiceId = 1, MaterialId = 2 },
+                    new ServiceMaterial { ServiceId = 1, MaterialId = 3 },
+                    new ServiceMaterial { ServiceId = 1, MaterialId = 4 },
+                    new ServiceMaterial { ServiceId = 1, MaterialId = 6 },
+                    new ServiceMaterial { ServiceId = 1, MaterialId = 7 },
+                    new ServiceMaterial { ServiceId = 2, MaterialId = 1 },
+                    new ServiceMaterial { ServiceId = 2, MaterialId = 2 },
+                    new ServiceMaterial { ServiceId = 2, MaterialId = 4 },
+                    new ServiceMaterial { ServiceId = 2, MaterialId = 5 },
+                    new ServiceMaterial { ServiceId = 3, MaterialId = 5 },
+                    new ServiceMaterial { ServiceId = 3, MaterialId = 4 },
+                    new ServiceMaterial { ServiceId = 3, MaterialId = 1 },
+                    new ServiceMaterial { ServiceId = 3, MaterialId = 3 },
+                    new ServiceMaterial { ServiceId = 4, MaterialId = 1 },
+                    new ServiceMaterial { ServiceId = 4, MaterialId = 3 },
+                    new ServiceMaterial { ServiceId = 4, MaterialId = 5 },
+                    new ServiceMaterial { ServiceId = 4, MaterialId = 7 }
+                );
             //Currency Entity
             builder.Entity<Currency>().ToTable("Currencies");
             builder.Entity<Currency>().HasKey(c => c.Id);
