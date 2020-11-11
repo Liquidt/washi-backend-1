@@ -33,6 +33,7 @@ namespace Washi.API.Mapping
             CreateMap<ServiceMaterial, ServiceMaterialResource>();
             CreateMap<LaundryServiceMaterial, LaundryServiceMaterialResource>();
             CreateMap<Promotion, PromotionResource>();
+            CreateMap<OrderDetail, OrderDetailResource>();
         }
     }
 }

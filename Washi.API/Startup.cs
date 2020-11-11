@@ -58,7 +58,7 @@ namespace Washi.API
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderStatusRepository, OrderStatusRepository>();
-
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
             services.AddScoped<IServiceMaterialRepository, ServiceMaterialRepository>();
             services.AddScoped<ILaundryServiceMaterialRepository, LaundryServiceMaterialRepository>();
             services.AddScoped<IPromotionRepository, PromotionRepository>();
@@ -78,7 +78,7 @@ namespace Washi.API
             services.AddScoped<ICurrencyService, CurrencyService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderStatusService, OrderStatusService>();
-
+            services.AddScoped<IOrderDetailService, OrderDetailService>();
             services.AddScoped<IServiceMaterialService, ServiceMaterialService>();
             services.AddScoped<ILaundryServiceMaterialService, LaundryServiceMaterialService>();
             services.AddScoped<IPromotionService, PromotionService>();

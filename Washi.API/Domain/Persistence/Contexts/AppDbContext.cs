@@ -26,7 +26,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<District> Districts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
-
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<LaundryServiceMaterial> LaundryServiceMaterials { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -377,6 +377,14 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<OrderDetail>().ToTable("OrderDetails");
             builder.Entity<OrderDetail>().HasKey(od => od.Id);
             builder.Entity<OrderDetail>().HasOne(od => od.Order).WithMany(o => o.OrderDetails).HasForeignKey(o => o.OrderId);
+            builder.Entity<OrderDetail>().HasOne(od => od.LaundryServiceMaterial).WithMany(lsm => lsm.OrderDetails).HasForeignKey(od => od.LaundryServiceMaterialId);
+            builder.Entity<OrderDetail>().Property(od => od.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<OrderDetail>().HasData
+                (
+                    new OrderDetail { Id = 1, OrderId = 1, LaundryServiceMaterialId = 1, Rating = 5 },
+                    new OrderDetail { Id = 2, OrderId = 1, LaundryServiceMaterialId = 2, Rating = 3 },
+                    new OrderDetail { Id = 3, OrderId = 2, LaundryServiceMaterialId = 1, Rating = 4 }
+                );
             //Promotion Entity
             builder.Entity<Promotion>().ToTable("Promotions");
             builder.Entity<Promotion>().HasKey(p => p.Id);

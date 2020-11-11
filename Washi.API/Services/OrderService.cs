@@ -94,7 +94,7 @@ namespace Washi.API.Services
             }
             catch (Exception ex)
             {
-                return new OrderResponse($"An error ocurred while updating user: {ex.Message}");
+                return new OrderResponse($"An error ocurred while updating Order: {ex.Message}");
             }
         }
 
