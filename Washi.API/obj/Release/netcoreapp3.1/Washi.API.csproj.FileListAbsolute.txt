@@ -53,9 +53,6 @@ C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Release\netcoreapp3.
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.csprojAssemblyReference.cache
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.AssemblyInfoInputs.cache
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.AssemblyInfo.cs
-C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.csproj.CoreCompileInputs.cache
-C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.RazorTargetAssemblyInfo.cache
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.csproj.CopyComplete
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\staticwebassets\Washi.API.StaticWebAssets.Manifest.cache
@@ -63,3 +60,10 @@ C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.dll
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.pdb
 C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.genruntimeconfig.cache
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\bin\Release\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.csproj.CoreCompileInputs.cache
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ivanl\Documents\GitHub\washi-backend\Washi.API\obj\Release\netcoreapp3.1\Washi.API.MvcApplicationPartsAssemblyInfo.cache

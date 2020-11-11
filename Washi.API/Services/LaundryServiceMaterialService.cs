@@ -48,11 +48,11 @@ namespace Washi.API.Services
             var laundries = new List<UserProfile>();
             foreach (var profile in allProfiles)
             {
-                foreach(var LSM in await ListLaundryServicesMaterialsByLaundryIdAsync(profile.UserId))
-                if (LSM.Id == laundryServiceMaterialId)
-                {
-                    laundries.Add(profile);
-                }
+                foreach (var LSM in await ListLaundryServicesMaterialsByLaundryIdAsync(profile.UserId))
+                    if (LSM.Id == laundryServiceMaterialId)
+                    {
+                        laundries.Add(profile);
+                    }
             }
             return laundries;
         }
@@ -70,6 +70,21 @@ namespace Washi.API.Services
             }
             return laundryServiceMaterials;
 
+        }
+
+        public async Task<IEnumerable<UserProfile>> ListLaundriesByServiceMaterialIdAsync(int serviceMaterialId)
+        {
+            var allProfiles = await _userProfileRepository.ListAsync();
+            var laundries = new List<UserProfile>();
+            foreach (var profile in allProfiles)
+            {
+                foreach (var LSM in await ListLaundryServicesMaterialsByLaundryIdAsync(profile.UserId))
+                    if (LSM.ServiceMaterialId == serviceMaterialId)
+                    {
+                        laundries.Add(profile);
+                    }
+            }
+            return laundries;
         }
 
         public async Task<IEnumerable<LaundryServiceMaterial>> ListLaundryServicesMaterialsByLaundryIdAsync(int laundryId)

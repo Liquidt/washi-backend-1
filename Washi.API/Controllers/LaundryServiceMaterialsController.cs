@@ -67,6 +67,16 @@ namespace Washi.API.Controllers
             return resources;
         }
 
+        [HttpGet("servicematerials/{serviceMaterialId}/laundries")]
+        public async Task<IEnumerable<UserProfileResource>> GetAllLaundriesByServiceMaterialIdAsync(int serviceMaterialId)
+        {
+            var laundries = await _laundryServiceMaterialService.ListLaundriesByServiceMaterialIdAsync(serviceMaterialId);
+            var resources = _mapper
+                .Map<IEnumerable<UserProfile>, IEnumerable<UserProfileResource>>(laundries);
+            //Check if ok
+            return resources;
+        }
+
         [HttpGet("servicematerials/{serviceMaterialId}/laundryservicematerials")]
         public async Task<IEnumerable<LaundryServiceMaterialResource>> GetAllLaundryServicesMaterialsByServiceMaterialIdAsync(int serviceMaterialId)
         {

@@ -15,6 +15,7 @@ namespace Washi.API.Domain.Services
         Task<LaundryServiceMaterialResponse> UpdateAsync(int id, LaundryServiceMaterial laundryServiceMaterial);
         Task<IEnumerable<LaundryServiceMaterial>> ListLaundryServicesMaterialsByLaundryIdAsync(int laundryId);
         Task<IEnumerable<UserProfile>> ListLaundriesByLaundryServiceMaterialIdAsync(int laundryServiceMaterialId);
+        Task<IEnumerable<UserProfile>> ListLaundriesByServiceMaterialIdAsync(int serviceMaterialId);
         Task<IEnumerable<LaundryServiceMaterial>> ListLaundryServiceMaterialsByServiceMaterialIdAsync(int serviceMaterialId);
     }
 }

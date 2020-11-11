@@ -36,7 +36,10 @@ namespace Washi.API.Persistence.Repositories
                 .Include(m => m.Service)
                 .ToListAsync();
         }
-
+        public async Task<IEnumerable<Material>> ListMaterialsByServiceIdAsync(int serviceId)
+        {
+            return await _context.Materials.ToListAsync();
+        }
         public async Task<IEnumerable<ServiceMaterial>> ListByServiceIdAsync(int serviceId)
         {
             return await _context.ServiceMaterials
@@ -45,5 +48,10 @@ namespace Washi.API.Persistence.Repositories
                 .Include(s => s.Material)
                 .ToListAsync();
         }
+        public async Task<ServiceMaterial> FindById(int id)
+        {
+            return await _context.ServiceMaterials.FindAsync(id);
+        }
+
     }
 }
