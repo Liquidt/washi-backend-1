@@ -30,6 +30,9 @@ namespace Washi.API.Mapping
                 opt => opt.MapFrom(src => src.Country.Name));
             CreateMap<Currency, CurrencyResource>();
             CreateMap<CountryCurrency, CountryCurrencyResource>();
+            CreateMap<ServiceMaterial, ServiceMaterialResource>();
+            CreateMap<LaundryServiceMaterial, LaundryServiceMaterialResource>();
+            CreateMap<Promotion, PromotionResource>();
         }
     }
 }

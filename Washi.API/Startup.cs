@@ -59,6 +59,9 @@ namespace Washi.API
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderStatusRepository, OrderStatusRepository>();
 
+            services.AddScoped<IServiceMaterialRepository, ServiceMaterialRepository>();
+            services.AddScoped<ILaundryServiceMaterialRepository, LaundryServiceMaterialRepository>();
+            services.AddScoped<IPromotionRepository, PromotionRepository>();
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPaymentMethodService, PaymentMethodService>();
@@ -76,6 +79,9 @@ namespace Washi.API
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderStatusService, OrderStatusService>();
 
+            services.AddScoped<IServiceMaterialService, ServiceMaterialService>();
+            services.AddScoped<ILaundryServiceMaterialService, LaundryServiceMaterialService>();
+            services.AddScoped<IPromotionService, PromotionService>();
             //Mapper
             services.AddAutoMapper(typeof(Startup));
 

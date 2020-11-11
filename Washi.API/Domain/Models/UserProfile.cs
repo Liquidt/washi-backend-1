@@ -22,5 +22,6 @@ namespace Washi.API.Domain.Models
         public District District { get; set; }
         public int DistrictId { get; set; }
         public string ImageUrl { get; set; }
+
     }
 }

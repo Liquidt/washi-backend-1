@@ -38,6 +38,20 @@ namespace Washi.API.Services
             return laundries;
         }
 
+        public async Task<IEnumerable<UserProfile>> ListLaundriesByDistrictIdAsync(int districtId)
+        {
+            var allProfiles = await _userProfileRepository.ListAsync();
+            var laundries = new List<UserProfile>();
+            foreach (var profile in allProfiles)
+            {
+                if (profile.UserType == EUserType.Laundry && profile.DistrictId == districtId)
+                {
+                    laundries.Add(profile);
+                }
+            }
+            return laundries;
+        }
+
         public async Task<UserProfileResponse> SaveAsync(UserProfile userProfile)
         {
             try
