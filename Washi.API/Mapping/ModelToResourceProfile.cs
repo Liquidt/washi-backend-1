@@ -29,6 +29,7 @@ namespace Washi.API.Mapping
             CreateMap<Currency, CurrencyResource>();
             CreateMap<CountryCurrency, CountryCurrencyResource>();
             CreateMap<ServiceMaterial, ServiceMaterialResource>();
+            CreateMap<LaundryServiceMaterial, LaundryServiceMaterialResource>();
         }
     }
 }

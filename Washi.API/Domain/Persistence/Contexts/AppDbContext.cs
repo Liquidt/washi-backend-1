@@ -24,7 +24,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<CountryCurrency> CountryCurrencies { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<District> Districts { get; set; }
-
+        public DbSet<LaundryServiceMaterial> LaundryServiceMaterials { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -48,8 +48,8 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new User { Id = 2, Email = "xavistian@gmail.com", Password = "tiaaaaaaaan" },
                     new User { Id = 3, Email = "bergazo@gmail.com", Password = "mdemarcio" },
                     new User { Id = 4, Email = "citrionix4004@gmail.com", Password = "william" },
-                    new User { Id = 5, Email = "navY@gmail.com", Password = "aasuuu" }
-
+                    new User { Id = 5, Email = "navY@gmail.com", Password = "aasuuu" },
+                    new User { Id = 6, Email = "carcazas@gmail.com", Password = "ontamisd" }
                 );
 
             //UserProfile Entity
@@ -70,14 +70,15 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<UserProfile>().Property(p => p.ImageUrl);
             builder.Entity<UserProfile>().HasData
                 (
-                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Av. Chiclayo 343", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 01, 23), DateOfRegistry = DateTime.Now, DistrictId = 1 },
-                    new UserProfile { Id = 2, UserId = 2, CorporationName = "El Lavadín", Address = "Watchflowers 451", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 2 },
+                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Av. Chiclayo 343", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 01, 23), DateOfRegistry = DateTime.Now, DistrictId = 2 },
+                    new UserProfile { Id = 2, UserId = 2, CorporationName = "El Lavadín", Address = "Watchflowers 451", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 1 },
                     new UserProfile { Id = 3, UserId = 3, FirstName = "Marcio", LastName = "Bergazo", Sex = ESex.Female, Address = "Magmalena 234", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 04, 26), DateOfRegistry = DateTime.Now, DistrictId = 3 },
                     new UserProfile { Id = 4, UserId = 4, CorporationName = "Don Lavadón", Address = "Chiclayork 543", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 4 },
-                    new UserProfile { Id = 5, UserId = 5, FirstName = "Yivan", LastName = "Pérez", Sex = ESex.Female, Address = "Jesus María 854", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 07, 13), DateOfRegistry = DateTime.Now, DistrictId = 5 }
+                    new UserProfile { Id = 5, UserId = 5, FirstName = "Yivan", LastName = "Pérez", Sex = ESex.Female, Address = "Jesus María 854", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 07, 13), DateOfRegistry = DateTime.Now, DistrictId = 5 },
+                    new UserProfile { Id = 6, UserId = 6, CorporationName = "Gianluca Lavadula", Address = "La Rossonera 666", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 1 }
+
                 );
             
-
             // PaymentMethod Entity
             builder.Entity<PaymentMethod>().ToTable("PaymentMethods");
             builder.Entity<PaymentMethod>().HasKey(p => p.Id);
@@ -184,7 +185,8 @@ namespace Washi.API.Domain.Persistence.Contexts
             //ServiceMaterial Entity
             builder.Entity<ServiceMaterial>().ToTable("ServiceMaterials");
             builder.Entity<ServiceMaterial>()
-                .HasKey(sm => new { sm.MaterialId, sm.ServiceId });
+                .HasKey(sm => sm.Id );
+            builder.Entity<ServiceMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
 
             builder.Entity<ServiceMaterial>()
                 .HasOne(sm => sm.Service)
@@ -197,25 +199,77 @@ namespace Washi.API.Domain.Persistence.Contexts
                 .HasForeignKey(sm => sm.MaterialId);
             builder.Entity<ServiceMaterial>().HasData
                 (
-                    new ServiceMaterial { ServiceId = 1, MaterialId = 1 },
-                    new ServiceMaterial { ServiceId = 1, MaterialId = 2 },
-                    new ServiceMaterial { ServiceId = 1, MaterialId = 3 },
-                    new ServiceMaterial { ServiceId = 1, MaterialId = 4 },
-                    new ServiceMaterial { ServiceId = 1, MaterialId = 6 },
-                    new ServiceMaterial { ServiceId = 1, MaterialId = 7 },
-                    new ServiceMaterial { ServiceId = 2, MaterialId = 1 },
-                    new ServiceMaterial { ServiceId = 2, MaterialId = 2 },
-                    new ServiceMaterial { ServiceId = 2, MaterialId = 4 },
-                    new ServiceMaterial { ServiceId = 2, MaterialId = 5 },
-                    new ServiceMaterial { ServiceId = 3, MaterialId = 5 },
-                    new ServiceMaterial { ServiceId = 3, MaterialId = 4 },
-                    new ServiceMaterial { ServiceId = 3, MaterialId = 1 },
-                    new ServiceMaterial { ServiceId = 3, MaterialId = 3 },
-                    new ServiceMaterial { ServiceId = 4, MaterialId = 1 },
-                    new ServiceMaterial { ServiceId = 4, MaterialId = 3 },
-                    new ServiceMaterial { ServiceId = 4, MaterialId = 5 },
-                    new ServiceMaterial { ServiceId = 4, MaterialId = 7 }
+                    new ServiceMaterial { Id = 1, ServiceId = 1, MaterialId = 1 },
+                    new ServiceMaterial { Id = 2, ServiceId = 1, MaterialId = 3 },
+                    new ServiceMaterial { Id = 3, ServiceId = 1, MaterialId = 4 },
+                    new ServiceMaterial { Id = 4, ServiceId = 1, MaterialId = 6 },
+                    new ServiceMaterial { Id = 5, ServiceId = 1, MaterialId = 7 },
+                    new ServiceMaterial { Id = 6, ServiceId = 2, MaterialId = 1 },
+                    new ServiceMaterial { Id = 7, ServiceId = 2, MaterialId = 2 },
+                    new ServiceMaterial { Id = 8, ServiceId = 2, MaterialId = 4 },
+                    new ServiceMaterial { Id = 9, ServiceId = 2, MaterialId = 5 },
+                    new ServiceMaterial { Id = 10, ServiceId = 3, MaterialId = 5 },
+                    new ServiceMaterial { Id = 11, ServiceId = 3, MaterialId = 4 },
+                    new ServiceMaterial { Id = 12, ServiceId = 3, MaterialId = 1 },
+                    new ServiceMaterial { Id = 13, ServiceId = 3, MaterialId = 3 },
+                    new ServiceMaterial { Id = 14, ServiceId = 4, MaterialId = 1 },
+                    new ServiceMaterial { Id = 15, ServiceId = 4, MaterialId = 3 },
+                    new ServiceMaterial { Id = 16, ServiceId = 4, MaterialId = 5 },
+                    new ServiceMaterial { Id = 17, ServiceId = 4, MaterialId = 7 },
+                    new ServiceMaterial { Id = 18, ServiceId = 4, MaterialId = 2 }
                 );
+            //LaundryServiceMaterial Entity
+            builder.Entity<LaundryServiceMaterial>().ToTable("LaundrySMs");
+            builder.Entity<LaundryServiceMaterial>().HasKey(lsm => lsm.Id);
+            builder.Entity<LaundryServiceMaterial>().Property(lsm => lsm.Id).IsRequired().ValueGeneratedOnAdd();
+
+            builder.Entity<LaundryServiceMaterial>()
+                .HasOne(lsm => lsm.Laundry)
+                .WithMany(lsm => lsm.LaundryServiceMaterials)
+                .HasForeignKey(lsm => lsm.LaundryId);
+
+            builder.Entity<LaundryServiceMaterial>()
+                .HasOne(lsm => lsm.ServiceMaterial)
+                .WithMany(lsm => lsm.LaundryServiceMaterials)
+                .HasForeignKey(lsm => lsm.ServiceMaterialId);
+
+            builder.Entity<LaundryServiceMaterial>().Property(lsm => lsm.Price).IsRequired();
+            builder.Entity<LaundryServiceMaterial>().Property(lsm => lsm.Description).IsRequired().HasMaxLength(150);
+            builder.Entity<LaundryServiceMaterial>().Property(lsm => lsm.EstimatedDeliveryTimeInDays);
+            builder.Entity<LaundryServiceMaterial>().Property(lsm => lsm.Rating);
+            builder.Entity<LaundryServiceMaterial>().HasData
+               (
+                    new LaundryServiceMaterial { Id = 1, LaundryId = 2, ServiceMaterialId = 1, Price = Convert.ToDecimal(15.00), Description = "Lavado al agua común de nuestros especialistas en máquinas de lavado.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 2, LaundryId = 2, ServiceMaterialId = 2, Price = Convert.ToDecimal(10.00), Description = "Nuestro lavado al agua de poliéster es de los mejores del mercado.", EstimatedDeliveryTimeInDays = 2 },
+                    new LaundryServiceMaterial { Id = 3, LaundryId = 2, ServiceMaterialId = 3, Price = Convert.ToDecimal(12.00), Description = "Cuidaremos de tu ropa de lana y quedará como nueva.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 4, LaundryId = 2, ServiceMaterialId = 4, Price = Convert.ToDecimal(17.00), Description = "Sabemos que tus prendas de nylon son muy importantes, por lo que las lavaremos con muchísimo cuidado.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 5, LaundryId = 2, ServiceMaterialId = 5, Price = Convert.ToDecimal(12.00), Description = "Las prendas de licra son caras y delicadas, dejanos el trabajo de lavarlas a nosotros.", EstimatedDeliveryTimeInDays = 3 },
+                    new LaundryServiceMaterial { Id = 6, LaundryId = 2, ServiceMaterialId = 6, Price = Convert.ToDecimal(13.00), Description = "Tus prendas de algodón estarán en las manos de expertos en lavado al seco.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 7, LaundryId = 2, ServiceMaterialId = 7, Price = Convert.ToDecimal(11.00), Description = "Tus sofisticadas prendas de lino serán lavadas de la mejor forma posible.", EstimatedDeliveryTimeInDays = 2 },
+                    new LaundryServiceMaterial { Id = 8, LaundryId = 2, ServiceMaterialId = 8, Price = Convert.ToDecimal(15.00), Description = "La lana puede ser difícil de lavar, déjanos ese trabajo a nosotros!", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 9, LaundryId = 2, ServiceMaterialId = 9, Price = Convert.ToDecimal(18.00), Description = "Las prendas de seda son lujosas y pueden ser dañadas. Déjanos lavarlas!", EstimatedDeliveryTimeInDays = 1 },
+
+                    new LaundryServiceMaterial { Id = 10, LaundryId = 4, ServiceMaterialId = 7, Price = Convert.ToDecimal(10.00), Description = "Las prendas de lino son muy difíciles de lavar, te ayudamos!", EstimatedDeliveryTimeInDays = 3 },
+                    new LaundryServiceMaterial { Id = 11, LaundryId = 4, ServiceMaterialId = 8, Price = Convert.ToDecimal(9.00), Description = "Prendas de lana? No te hagas bolas! Déjanos lavarlas a nosotros!", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 12, LaundryId = 4, ServiceMaterialId = 9, Price = Convert.ToDecimal(15.00), Description = "Prendas de seda? No te hagas bolas! Déjanos lavarlas a nosotros!", EstimatedDeliveryTimeInDays = 2 },
+                    new LaundryServiceMaterial { Id = 13, LaundryId = 4, ServiceMaterialId = 10, Price = Convert.ToDecimal(17.00), Description = "Lavar a mano tus prendas de seda es la mejor forma de mantenerlas como nuevas.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 14, LaundryId = 4, ServiceMaterialId = 11, Price = Convert.ToDecimal(12.00), Description = "El lavado a mano de lana es una opción bastante factible y económica.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 15, LaundryId = 4, ServiceMaterialId = 12, Price = Convert.ToDecimal(13.00), Description = "Lavado a la antigua! Siempre será mejor!", EstimatedDeliveryTimeInDays = 3 },
+                    new LaundryServiceMaterial { Id = 16, LaundryId = 4, ServiceMaterialId = 13, Price = Convert.ToDecimal(11.00), Description = "El poliéster es uno de los materiales más adecuados para el lavado a mano.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 17, LaundryId = 4, ServiceMaterialId = 14, Price = Convert.ToDecimal(10.00), Description = "Plancharemos tus prendas de algodón tan bien que quedarán como nuevas!", EstimatedDeliveryTimeInDays = 2 },
+                    new LaundryServiceMaterial { Id = 18, LaundryId = 4, ServiceMaterialId = 15, Price = Convert.ToDecimal(14.00), Description = "Poliéster? No es problema para nosotros! Podemos plancharlo!", EstimatedDeliveryTimeInDays = 1 },
+
+                    new LaundryServiceMaterial { Id = 19, LaundryId = 6, ServiceMaterialId = 13, Price = Convert.ToDecimal(13.00), Description = "Lavado a mano de poliéster hecho por expertos.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 20, LaundryId = 6, ServiceMaterialId = 14, Price = Convert.ToDecimal(15.00), Description = "Planchado simple de prendas de algodón hecho por expertos.", EstimatedDeliveryTimeInDays = 3 },
+                    new LaundryServiceMaterial { Id = 21, LaundryId = 6, ServiceMaterialId = 15, Price = Convert.ToDecimal(17.00), Description = "El poliéster es fácil de planchar para nosotros, confíanos tus prendas!", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 22, LaundryId = 6, ServiceMaterialId = 16, Price = Convert.ToDecimal(21.00), Description = "Puede que sea imposible para ti planchar prendas de seda. Para nosotros no.", EstimatedDeliveryTimeInDays = 2 },
+                    new LaundryServiceMaterial { Id = 23, LaundryId = 6, ServiceMaterialId = 17, Price = Convert.ToDecimal(21.00), Description = "Prendas de licra? Nosotros podemos plancharlas!", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 24, LaundryId = 6, ServiceMaterialId = 18, Price = Convert.ToDecimal(20.00), Description = "Las prendas de lino son caras y delicadas, dejanos plancharlas por ti.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 25, LaundryId = 6, ServiceMaterialId = 1, Price = Convert.ToDecimal(12.00), Description = "Planchamos tus prendas de algodón a bajo costo!", EstimatedDeliveryTimeInDays = 3 },
+                    new LaundryServiceMaterial { Id = 26, LaundryId = 6, ServiceMaterialId = 2, Price = Convert.ToDecimal(14.00), Description = "Lavado de poliéster en manos de expertos en lavado al agua.", EstimatedDeliveryTimeInDays = 1 },
+                    new LaundryServiceMaterial { Id = 27, LaundryId = 6, ServiceMaterialId = 3, Price = Convert.ToDecimal(13.00), Description = "Lavado de lana en manos de expertos en lavado al agua.", EstimatedDeliveryTimeInDays = 1 }
+               );
+    
             //Currency Entity
             builder.Entity<Currency>().ToTable("Currencies");
             builder.Entity<Currency>().HasKey(c => c.Id);

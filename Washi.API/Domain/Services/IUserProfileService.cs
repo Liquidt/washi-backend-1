@@ -12,6 +12,7 @@ namespace Washi.API.Domain.Services
     {
         Task<IEnumerable<UserProfile>> ListAsync();
         Task<IEnumerable<UserProfile>> ListLaundriesAsync();
+        Task<IEnumerable<UserProfile>> ListLaundriesByDistrictIdAsync(int districtId);
         Task<UserProfileResponse> FindById(int userProfileId);
         Task<UserProfileResponse> SaveAsync(UserProfile profile);
         Task<UserProfileResponse> UpdateAsync(int id, UserProfile profile);

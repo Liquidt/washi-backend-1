@@ -19,5 +19,6 @@ namespace Washi.API.Resources
         public int PhoneNumber { get; set; }
         public string CorporationName { get; set; }
         public string UserType { get; set; }
+        public int DistrictId { get; set; }
     }
 }

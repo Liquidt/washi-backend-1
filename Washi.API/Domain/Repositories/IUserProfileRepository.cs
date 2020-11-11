@@ -10,6 +10,7 @@ namespace Washi.API.Domain.Repositories
     {
         Task<IEnumerable<UserProfile>> ListAsync();
         Task<IEnumerable<UserProfile>> ListLaundriesAsync();
+        Task<IEnumerable<UserProfile>> ListLaundriesByDistrictIdAsync(int districtId);
         Task AddAsync(UserProfile profile);
         Task<UserProfile> FindById(int id);
         void Update(UserProfile profile);
