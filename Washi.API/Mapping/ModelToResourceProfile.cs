@@ -19,6 +19,8 @@ namespace Washi.API.Mapping
             CreateMap<UserProfile, UserProfileResource>();
             CreateMap<Subscription, SubscriptionResource>();
             CreateMap<UserSubscription, UserSubscriptionResource>();
+            CreateMap<Order, OrderResource>();
+            CreateMap<OrderStatus, OrderStatusResource>();
             CreateMap<Country, CountryResource>();
             CreateMap<District, DistrictResource>()
                 .ForMember(src => src.Department,
