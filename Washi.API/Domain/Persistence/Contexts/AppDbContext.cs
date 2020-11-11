@@ -24,6 +24,9 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<CountryCurrency> CountryCurrencies { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<District> Districts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<LaundryServiceMaterial> LaundryServiceMaterials { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -342,6 +345,45 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new District { Id = 3, Name = "San Isidro", DepartmentId = 1 },
                     new District { Id = 4, Name = "Chaclacayo", DepartmentId = 1 },
                     new District { Id = 5, Name = "Chiclayo", DepartmentId = 2 }
+                );
+            //Order Entity
+            builder.Entity<Order>().ToTable("Orders");
+            builder.Entity<Order>().HasKey(o => o.Id);
+            builder.Entity<Order>().Property(o => o.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Order>().Property(o => o.DeliveryAddress).IsRequired();
+            builder.Entity<Order>().HasOne(o => o.User).WithMany(o => o.Orders).HasForeignKey(o => o.UserId);
+            builder.Entity<Order>().HasOne(o => o.OrderStatus).WithMany(o => o.Orders).HasForeignKey(o => o.OrderStatusId);
+            builder.Entity<Order>().HasData
+                (
+                    new Order { Id = 1, Date = DateTime.Now, DeliveryAddress = "Ca. Manco Capac 121, dpto. 21", OrderAmount = 42.50, OrderStatusId = 1, UserId = 1, DeliveryDate = DateTime.Now.AddDays(2) },
+                    new Order { Id = 2, Date = DateTime.Now, DeliveryAddress = "Av. 28 de Julio 230, dpto. 802", OrderAmount = 130.30, OrderStatusId = 2, UserId = 2, DeliveryDate = DateTime.Now.AddDays(1) },
+                    new Order { Id = 3, Date = DateTime.Now, DeliveryAddress = "Av. Larco 202", OrderAmount = 320.50, OrderStatusId = 3, UserId = 3, DeliveryDate = DateTime.Now.AddDays(3) }
+                );
+            //OrderStatus Entity
+            builder.Entity<OrderStatus>().ToTable("OrderStatuses");
+            builder.Entity<OrderStatus>().HasKey(os => os.Id);
+            builder.Entity<OrderStatus>().Property(os => os.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<OrderStatus>().Property(os => os.Name).IsRequired();
+            builder.Entity<OrderStatus>().HasData
+                (
+                    new OrderStatus { Id = 1, Name = "Por comenzar" },
+                    new OrderStatus { Id = 2, Name = "En proceso" },
+                    new OrderStatus { Id = 3, Name = "A punto de terminar" },
+                    new OrderStatus { Id = 4, Name = "Lavado finalizado" },
+                    new OrderStatus { Id = 5, Name = "Siendo entregada" },
+                    new OrderStatus { Id = 6, Name = "Entregada" }
+                );
+            //OrderDetail Entity
+            builder.Entity<OrderDetail>().ToTable("OrderDetails");
+            builder.Entity<OrderDetail>().HasKey(od => od.Id);
+            builder.Entity<OrderDetail>().HasOne(od => od.Order).WithMany(o => o.OrderDetails).HasForeignKey(o => o.OrderId);
+            builder.Entity<OrderDetail>().HasOne(od => od.LaundryServiceMaterial).WithMany(lsm => lsm.OrderDetails).HasForeignKey(od => od.LaundryServiceMaterialId);
+            builder.Entity<OrderDetail>().Property(od => od.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<OrderDetail>().HasData
+                (
+                    new OrderDetail { Id = 1, OrderId = 1, LaundryServiceMaterialId = 1, Rating = 5 },
+                    new OrderDetail { Id = 2, OrderId = 1, LaundryServiceMaterialId = 2, Rating = 3 },
+                    new OrderDetail { Id = 3, OrderId = 2, LaundryServiceMaterialId = 1, Rating = 4 }
                 );
             //Promotion Entity
             builder.Entity<Promotion>().ToTable("Promotions");

@@ -19,8 +19,11 @@ namespace Washi.API.Mapping
             CreateMap<SaveUserProfileResource, UserProfile>();
             CreateMap<SaveSubscriptionResource, Subscription>();
             CreateMap<SaveUserSubscriptionResource, UserSubscription>();
+            CreateMap<SaveOrderResource, Order>();
+            CreateMap<SaveOrderStatusResource, OrderStatus>();
             CreateMap<SaveLaundryServiceMaterialResource, LaundryServiceMaterial>();
             CreateMap<SavePromotionResource, Promotion>();
+            CreateMap<SaveOrderDetailResource, OrderDetail>();
         }
     }
 }

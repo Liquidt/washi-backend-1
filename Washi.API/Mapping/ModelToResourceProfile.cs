@@ -19,6 +19,8 @@ namespace Washi.API.Mapping
             CreateMap<UserProfile, UserProfileResource>();
             CreateMap<Subscription, SubscriptionResource>();
             CreateMap<UserSubscription, UserSubscriptionResource>();
+            CreateMap<Order, OrderResource>();
+            CreateMap<OrderStatus, OrderStatusResource>();
             CreateMap<Country, CountryResource>();
             CreateMap<District, DistrictResource>()
                 .ForMember(src => src.Department,
@@ -31,6 +33,7 @@ namespace Washi.API.Mapping
             CreateMap<ServiceMaterial, ServiceMaterialResource>();
             CreateMap<LaundryServiceMaterial, LaundryServiceMaterialResource>();
             CreateMap<Promotion, PromotionResource>();
+            CreateMap<OrderDetail, OrderDetailResource>();
         }
     }
 }
