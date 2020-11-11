@@ -25,6 +25,7 @@ namespace Washi.API.Domain.Persistence.Contexts
         public DbSet<Department> Departments { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<LaundryServiceMaterial> LaundryServiceMaterials { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -341,6 +342,28 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new District { Id = 3, Name = "San Isidro", DepartmentId = 1 },
                     new District { Id = 4, Name = "Chaclacayo", DepartmentId = 1 },
                     new District { Id = 5, Name = "Chiclayo", DepartmentId = 2 }
+                );
+            //Promotion Entity
+            builder.Entity<Promotion>().ToTable("Promotions");
+            builder.Entity<Promotion>().HasKey(p => p.Id);
+            builder.Entity<Promotion>().Property(p => p.Id)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+            builder.Entity<Promotion>()
+                .HasOne(p => p.LaundryServiceMaterial)
+                .WithMany(p => p.Promotions)
+                .HasForeignKey(p => p.LaundryServiceMaterialId);
+            builder.Entity<Promotion>().Property(p => p.DiscountPercentage).IsRequired();
+            builder.Entity<Promotion>().Property(p => p.InitialDate);
+            builder.Entity<Promotion>().Property(p => p.EndingDate).IsRequired();
+            builder.Entity<Promotion>().HasData
+                (
+                    new Promotion { Id = 1, LaundryServiceMaterialId = 1, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1), DiscountPercentage = 25 },
+                    new Promotion { Id = 2, LaundryServiceMaterialId = 4, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(2), DiscountPercentage = 20 },
+                    new Promotion { Id = 3, LaundryServiceMaterialId = 8, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1), DiscountPercentage = 15 },
+                    new Promotion { Id = 4, LaundryServiceMaterialId = 16, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1), DiscountPercentage = 10 },
+                    new Promotion { Id = 5, LaundryServiceMaterialId = 19, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(2), DiscountPercentage = 30 },
+                    new Promotion { Id = 6, LaundryServiceMaterialId = 21, InitialDate = DateTime.Now, EndingDate = DateTime.Now.AddMonths(1), DiscountPercentage = 15 }
                 );
 
             ApplySnakeCaseNamingConvention(builder);

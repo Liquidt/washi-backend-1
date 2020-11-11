@@ -16,5 +16,6 @@ namespace Washi.API.Domain.Models
         public string Description { get; set; }
         public int EstimatedDeliveryTimeInDays { get; set; }
         public int Rating { get; set; }
+        public List<Promotion> Promotions { get; set; }
     }
 }
