@@ -56,6 +56,8 @@ namespace Washi.API
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<ICountryCurrencyRepository, CountryCurrencyRepository>();
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderStatusRepository, OrderStatusRepository>();
 
             //Scoped Services
             services.AddScoped<IUserService, UserService>();
@@ -71,6 +73,8 @@ namespace Washi.API
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<ICountryCurrencyService, CountryCurrencyService>();
             services.AddScoped<ICurrencyService, CurrencyService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderStatusService, OrderStatusService>();
 
             //Mapper
             services.AddAutoMapper(typeof(Startup));

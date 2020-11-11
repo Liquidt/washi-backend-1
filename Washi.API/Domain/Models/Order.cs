@@ -16,7 +16,7 @@ namespace Washi.API.Domain.Models
         public DateTime DeliveryDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public int OrderStatusId { get; set; }
-        public OrderDetail OrderDetail { get; set; }
-        public int OrderDetailId { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
+        
     }
 }

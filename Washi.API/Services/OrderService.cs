@@ -13,6 +13,12 @@ namespace Washi.API.Services
     {
         private readonly IOrderRepository _orderRepository;
         public readonly IUnitOfWork _unitOfWork;
+
+        public OrderService(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
+        {
+            _orderRepository = orderRepository;
+            _unitOfWork = unitOfWork;
+        }
         public async Task<OrderResponse> DeleteAsync(int id)
         {
             var existingOrder = await _orderRepository.FindById(id);

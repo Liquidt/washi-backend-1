@@ -295,7 +295,10 @@ namespace Washi.API.Domain.Persistence.Contexts
                     new OrderStatus { Id = 5, Name = "Siendo entregada" },
                     new OrderStatus { Id = 6, Name = "Entregada" }
                 );
-
+            //OrderDetail Entity
+            builder.Entity<OrderDetail>().ToTable("OrderDetails");
+            builder.Entity<OrderDetail>().HasKey(od => od.Id);
+            builder.Entity<OrderDetail>().HasOne(od => od.Order).WithMany(o => o.OrderDetails).HasForeignKey(o => o.OrderId);
             ApplySnakeCaseNamingConvention(builder);
         }
 
