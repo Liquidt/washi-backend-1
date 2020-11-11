@@ -1,2 +1,4 @@
-Washi.API.Test\bin\
-Washi.API\obj\
+*/bin/*
+*/obj/*
+bin/*
+obj/*
