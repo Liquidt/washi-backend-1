@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Washi.API.Domain.Models;
 using Washi.API.Domain.Repositories;
+using Washi.API.Domain.Services.Communications;
 using Washi.API.Services;
 
 namespace Washi.API.Test
@@ -32,6 +33,25 @@ namespace Washi.API.Test
 
             //Assert
             subscriptionCount.Should().Equals(0);
+        }
+
+        [Test]
+        public async Task SavingWhenErrorReturnException()
+        {
+            //Arrange
+            Subscription subscription = new Subscription { };
+            var mockSubscriptionRepository = GetDefaultISubscriptionRepositoryInstance();
+            var mockUserSubscriptionRepository = GetDefaultIUserSubscriptionRepositoryInstance();
+            mockSubscriptionRepository.Setup(u => u.AddSync(subscription))
+                .Throws(new Exception());
+            var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
+            var service = new SubscriptionService(mockSubscriptionRepository.Object, mockUnitOfWork.Object,mockUserSubscriptionRepository.Object);
+
+            //Act
+            SubscriptionResponse response = await service.SaveAsync(subscription);
+            var message = response.Message;
+            //Assert
+            message.Should().Contain("An error ocurred while saving payment method");
         }
 
         private Mock<ISubscriptionRepository> GetDefaultISubscriptionRepositoryInstance()

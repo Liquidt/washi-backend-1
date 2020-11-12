@@ -55,6 +55,24 @@ namespace Washi.API.Test
             message.Should().Be("User not found");
         }
 
+        [Test]
+        public async Task SavingWhenErrorReturnException()
+        {
+            //Arrange
+            User user = new User { };
+            var mockUserRepository = GetDefaultIUserRepositoryInstance();
+            mockUserRepository.Setup(u => u.AddSync(user))
+                .Throws(new Exception());
+            var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
+            var service = new UserService(mockUserRepository.Object, mockUnitOfWork.Object);
+
+            //Act
+            UserResponse response = await service.SaveAsync(user);
+            var message = response.Message;
+            //Assert
+            message.Should().Contain("An error ocurred while saving the user");
+        }
+
         private Mock<IUserRepository> GetDefaultIUserRepositoryInstance()
         {
             return new Mock<IUserRepository>();

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Washi.API.Domain.Models;
 using Washi.API.Domain.Repositories;
+using Washi.API.Domain.Services.Communications;
 using Washi.API.Services;
 
 namespace Washi.API.Test
@@ -30,6 +31,24 @@ namespace Washi.API.Test
 
             //Assert
             serviceCount.Should().Equals(0);
+        }
+
+        [Test]
+        public async Task SavingWhenErrorReturnException()
+        {
+            //Arrange
+            Service service = new Service { };
+            var mockServiceRepository = GetDefaultIServiceRepositoryInstance();
+            mockServiceRepository.Setup(u => u.AddAsync(service))
+                .Throws(new Exception());
+            var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
+            var serviceS = new ServiceService(mockServiceRepository.Object, mockUnitOfWork.Object);
+
+            //Act
+            ServiceResponse response = await serviceS.SaveAsync(service);
+            var message = response.Message;
+            //Assert
+            message.Should().Contain("An error ocurred while saving service");
         }
 
         private Mock<IServiceRepository> GetDefaultIServiceRepositoryInstance()
