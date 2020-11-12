@@ -61,6 +61,14 @@ namespace Washi.API.Controllers
                 .Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
             return resources;
         }
+        [HttpGet("laundries/{laundryId}")]
+        public async Task<IEnumerable<OrderResource>> GetByLaundryId(int laundryId)
+        {
+            var orders = await _orderService.ListByLaundryId(laundryId);
+            var resources = _mapper
+                .Map<IEnumerable<Order>, IEnumerable<OrderResource>>(orders);
+            return resources;
+        }
         [HttpPost]
         public async Task<IActionResult>PostAsync([FromBody]SaveOrderResource resource)
         {
