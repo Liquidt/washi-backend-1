@@ -13,11 +13,15 @@ namespace Washi.API.Services
     {
         private readonly IOrderRepository _orderRepository;
         public readonly IUnitOfWork _unitOfWork;
+        private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly ILaundryServiceMaterialRepository _laundryServiceMaterialRepository;
 
-        public OrderService(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
+        public OrderService(IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository, ILaundryServiceMaterialRepository laundryServiceMaterialRepository,IUnitOfWork unitOfWork)
         {
             _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
+            _laundryServiceMaterialRepository = laundryServiceMaterialRepository;
+            _orderDetailRepository = orderDetailRepository;
         }
         public async Task<OrderResponse> DeleteAsync(int id)
         {
@@ -98,5 +102,38 @@ namespace Washi.API.Services
             }
         }
 
+        public async Task<IEnumerable<Order>> ListByLaundryId(int laundryId)
+        {
+            var orders = await _orderRepository.ListAsync();
+            var lsm = await _laundryServiceMaterialRepository.ListLaundryServicesMaterialsByLaundryIdAsync(laundryId);
+            var orderDetails = await _orderDetailRepository.ListAsync();
+            var odLSMId = new List<OrderDetail>();
+            var result = new List<Order>();
+            foreach (var od in orderDetails)
+            {
+                foreach(var l in lsm)
+                {
+                    if (od.LaundryServiceMaterialId==l.Id)
+                    {
+                        odLSMId.Add(od);
+                    }
+                }
+            }
+            foreach (var o in orders)
+            {
+                foreach(var od in odLSMId)
+                {
+                    if (o.Id==od.OrderId)
+                    {
+                        result.Add(o);
+                    }
+                }
+            }
+            return result;
+        }
+        //Listar todas las ordenes
+        //Listar todos los laundyservicematerial by laundryid
+        //Listar todos los orderdetails where LSMId == LSMId de los anteriores
+        //De las ordenes, hacer una iteracion si el id de la order es igual al order id de la tercera lista, se anade a una lista temporal
     }
 }

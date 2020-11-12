@@ -12,6 +12,7 @@ namespace Washi.API.Domain.Services
         Task<IEnumerable<Order>> ListAsync();
         Task<IEnumerable<Order>> ListByUserId(int userId);
         Task<IEnumerable<Order>> ListByUserIdAndOrderStatusId(int userId, int orderStatusId);
+        Task<IEnumerable<Order>> ListByLaundryId(int laundryId);
         Task<OrderResponse> FindByOrderId(int orderId);
         Task<OrderResponse> UpdateAsync(int id, Order order);
         Task<OrderResponse> DeleteAsync(int id);
