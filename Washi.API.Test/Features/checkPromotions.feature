@@ -5,11 +5,6 @@
 
 @checkPromotions
 
-Scenario: You want to know what offers are available
-	Given you want to know what offers you can use
-	When to request service from a laundry
-	Then you can see all the promotions that are available
-
 Scenario: There are no promotions
 	Given a laundry service has not been used
 	When the information in this
