@@ -18,8 +18,8 @@ namespace Washi.API.Test.Steps
         public User user = new User { Id = 1000, Email = "pepito123", Password = "asasas" };
         public Subscription subscription = new Subscription { Id = 1000, Name = "ultra premium", Price = 100, DurationInDays = 60 };
         public UserSubscription userSubscription = new UserSubscription { UserId = 1000, SubscriptionId= 1000, InitialDate = new DateTime(2020, 09, 01), EndingDate = new DateTime(2020, 11, 01) };
-        public bool tiene = false;
-        public async void CrearDatos()
+        public bool has = false;
+        public async void CreateData()
         {
             await userService.SaveAsync(user);
             await subscriptionService.SaveAsync(subscription);
@@ -32,9 +32,9 @@ namespace Washi.API.Test.Steps
             await userService.SaveAsync(new User { Id = 1001, Email = "pepito123", Password = "asasas" });
             IEnumerable<UserSubscription> lista = await userSubscriptionService.ListByUserIdAsync(user.Id);
             if (!lista.Any())
-                tiene = false;
+                has = false;
             else
-                tiene = true;
+                has = true;
         }
         [When(@"Trying to adquire a subscription")]
         public async void WhenTryingToAdquireASubscription()
@@ -53,7 +53,7 @@ namespace Washi.API.Test.Steps
         [Given(@"the user wants to see all the subscriptions he/she had")]
         public void GivenTheUserWantsToSeeAllTheSubscriptionsHeSheHad()
         {
-            CrearDatos();           
+            CreateData();           
         }
 
         [When(@"trying to see his subscription")]
