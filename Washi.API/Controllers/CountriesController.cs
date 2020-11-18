@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Washi.API.Resources;
 
 namespace Washi.API.Controllers
 {
+    [Authorize]
     [Microsoft.AspNetCore.Mvc.Route("/api/[controller]")]
     public class CountriesController:Controller
     {

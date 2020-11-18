@@ -13,5 +13,7 @@ namespace Washi.API.Domain.Repositories
         Task<User> FindById(int id);
         void Update(User user);
         void Remove(User user);
+        //Authentication
+        Task<User> Authenticate(string email, string password);
     }
 }

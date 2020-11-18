@@ -37,5 +37,10 @@ namespace Washi.API.Persistence.Repositories
         {
             _context.Users.Remove(user);
         }
+        //Authentication
+        public async Task<User> Authenticate(string email, string password)
+        {
+            return await _context.Users.Include(x => x.UserProfile).FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
+        }
     }
 }

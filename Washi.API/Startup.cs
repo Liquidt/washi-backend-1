@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Washi.API.Domain.Persistence.Contexts;
 using Washi.API.Domain.Repositories;
 using Washi.API.Domain.Services;
@@ -20,6 +23,7 @@ using Washi.API.Extensions;
 using Washi.API.Persistence.Repositories;
 using Washi.API.Repositories;
 using Washi.API.Services;
+using Washi.API.Settings;
 
 namespace Washi.API
 {
@@ -36,10 +40,9 @@ namespace Washi.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            //Controllers
             services.AddControllers();
-            services.AddControllers().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                );
+            //DB Context
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
@@ -91,6 +94,31 @@ namespace Washi.API
             //Swagger
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddCustomSwagger();
+
+            //AppSettings Section Reference
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+            //JSON Web Token Authentication Configuration
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            //Authentication Service Configuration
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,10 +133,14 @@ namespace Washi.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
 
+            //CORS Configuration
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+            //Authentication Support
+            app.UseAuthentication();
+            app.UseAuthorization();
+            //----
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
