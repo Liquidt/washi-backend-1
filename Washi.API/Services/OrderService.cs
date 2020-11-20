@@ -85,6 +85,7 @@ namespace Washi.API.Services
             if (existingOrder == null)
                 return new OrderResponse("Order not found");
 
+            existingOrder.OrderStatusId = order.OrderStatusId;
             existingOrder.DeliveryAddress = order.DeliveryAddress;
             existingOrder.OrderAmount = order.OrderAmount;
             existingOrder.DeliveryDate = order.DeliveryDate;
@@ -123,7 +124,7 @@ namespace Washi.API.Services
             {
                 foreach(var od in odLSMId)
                 {
-                    if (o.Id==od.OrderId)
+                    if (o.Id==od.OrderId && result.Contains(o)==false)
                     {
                         result.Add(o);
                     }
@@ -131,9 +132,9 @@ namespace Washi.API.Services
             }
             return result;
         }
-        //Listar todas las ordenes
-        //Listar todos los laundyservicematerial by laundryid
-        //Listar todos los orderdetails where LSMId == LSMId de los anteriores
-        //De las ordenes, hacer una iteracion si el id de la order es igual al order id de la tercera lista, se anade a una lista temporal
-    }
+            //Listar todas las ordenes
+            //Listar todos los laundyservicematerial by laundryid
+            //Listar todos los orderdetails where LSMId == LSMId de los anteriores
+            //De las ordenes, hacer una iteracion si el id de la order es igual al order id de la tercera lista, se anade a una lista temporal
+        }
 }

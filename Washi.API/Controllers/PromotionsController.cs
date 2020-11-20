@@ -13,7 +13,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Washi.API.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    //[Microsoft.AspNetCore.Authorization.Authorize]
     [Route("/api/[controller]")]
     public class PromotionsController : Controller
     {

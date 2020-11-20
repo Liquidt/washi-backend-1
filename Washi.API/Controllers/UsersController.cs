@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Washi.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("/api/[controller]")]
     public class UsersController : Controller
     {

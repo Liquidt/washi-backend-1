@@ -10,7 +10,7 @@ using Washi.API.Resources;
 
 namespace Washi.API.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    //[Microsoft.AspNetCore.Authorization.Authorize]
     [Route("/api/[controller]")]
     public class UserProfilesController : Controller
     {
