@@ -11,6 +11,7 @@ namespace Washi.API.Domain.Services
     {
         Task<IEnumerable<User>> ListAsync();
         Task<UserResponse> GetByIdAsync(int id);
+        Task<UserResponse> FindByEmail(string email);
         Task<UserResponse> SaveAsync(User user);
         Task<UserResponse> UpdateAsync(int id, User user);
         Task<UserResponse> DeleteAsync(int id);

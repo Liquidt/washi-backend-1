@@ -20,5 +20,6 @@ namespace Washi.API.Resources
         public string CorporationName { get; set; }
         public string UserType { get; set; }
         public int DistrictId { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

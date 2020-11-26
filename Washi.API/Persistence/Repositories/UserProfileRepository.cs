@@ -47,5 +47,6 @@ namespace Washi.API.Persistence.Repositories
         {
             _context.UserProfiles.Remove(UserProfile);
         }
+
     }
 }

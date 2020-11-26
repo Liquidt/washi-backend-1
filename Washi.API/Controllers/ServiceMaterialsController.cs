@@ -30,6 +30,18 @@ namespace Washi.API.Controllers
                 .Map<IEnumerable<ServiceMaterial>, IEnumerable<ServiceMaterialResource>>(serviceMaterials);
             return resources;
         }
+
+        [HttpGet("servicematerials/{id}")]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            var result = await _serviceMaterialService.GetByServiceMaterialId(id);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var serviceMaterialResource = _mapper
+                .Map<ServiceMaterial, ServiceMaterialResource>(result.Resource);
+            return Ok(serviceMaterialResource);
+        }
+
         [HttpGet("services/{serviceId}/materials")]
         public async Task<IEnumerable<MaterialResource>> GetAllMaterialsByServiceIdAsync(int serviceId)
         {

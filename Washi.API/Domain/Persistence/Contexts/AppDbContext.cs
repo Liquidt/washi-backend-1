@@ -72,14 +72,15 @@ namespace Washi.API.Domain.Persistence.Contexts
             builder.Entity<UserProfile>().Property(p => p.CorporationName);
             builder.Entity<UserProfile>().Property(p => p.UserType).IsRequired();
             builder.Entity<UserProfile>().Property(p => p.ImageUrl);
+            builder.Entity<UserProfile>().Property(p => p.DistrictId);
             builder.Entity<UserProfile>().HasData
                 (
-                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Av. Chiclayo 343", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 01, 23), DateOfRegistry = DateTime.Now, DistrictId = 2 },
-                    new UserProfile { Id = 2, UserId = 2, CorporationName = "El Lavadín", Address = "Watchflowers 451", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 1 },
-                    new UserProfile { Id = 3, UserId = 3, FirstName = "Marcio", LastName = "Bergazo", Sex = ESex.Female, Address = "Magmalena 234", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 04, 26), DateOfRegistry = DateTime.Now, DistrictId = 3 },
-                    new UserProfile { Id = 4, UserId = 4, CorporationName = "Don Lavadón", Address = "Chiclayork 543", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 4 },
-                    new UserProfile { Id = 5, UserId = 5, FirstName = "Yivan", LastName = "Pérez", Sex = ESex.Female, Address = "Jesus María 854", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 07, 13), DateOfRegistry = DateTime.Now, DistrictId = 5 },
-                    new UserProfile { Id = 6, UserId = 6, CorporationName = "Gianluca Lavadula", Address = "La Rossonera 666", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 1 }
+                    new UserProfile { Id = 1, UserId = 1, FirstName = "Felipe", LastName = "Kacomt", Sex = ESex.Female, Address = "Av. Chiclayo 343", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 01, 23), DateOfRegistry = DateTime.Now, DistrictId = 2, ImageUrl = null },
+                    new UserProfile { Id = 2, UserId = 2, CorporationName = "El Lavadín", Address = "Watchflowers 451", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 1, ImageUrl = null },
+                    new UserProfile { Id = 3, UserId = 3, FirstName = "Marcio", LastName = "Bergazo", Sex = ESex.Female, Address = "Magmalena 234", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 04, 26), DateOfRegistry = DateTime.Now, DistrictId = 3, ImageUrl = null },
+                    new UserProfile { Id = 4, UserId = 4, CorporationName = "Don Lavadón", Address = "Chiclayork 543", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 4, ImageUrl = null },
+                    new UserProfile { Id = 5, UserId = 5, FirstName = "Yivan", LastName = "Pérez", Sex = ESex.Female, Address = "Jesus María 854", PhoneNumber = 987654321, UserType = EUserType.Washer, DateOfBirth = new DateTime(1998, 07, 13), DateOfRegistry = DateTime.Now, DistrictId = 5, ImageUrl = null },
+                    new UserProfile { Id = 6, UserId = 6, CorporationName = "Gianluca Lavadula", Address = "La Rossonera 666", PhoneNumber = 999888777, UserType = EUserType.Laundry, DateOfBirth = new DateTime(1900, 01, 01), DateOfRegistry = DateTime.Now, DistrictId = 1, ImageUrl = null }
 
                 );
             

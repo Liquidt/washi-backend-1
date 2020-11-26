@@ -17,5 +17,6 @@ namespace Washi.API.Domain.Services
         Task<IEnumerable<UserProfile>> ListLaundriesByLaundryServiceMaterialIdAsync(int laundryServiceMaterialId);
         Task<IEnumerable<UserProfile>> ListLaundriesByServiceMaterialIdAsync(int serviceMaterialId);
         Task<IEnumerable<LaundryServiceMaterial>> ListLaundryServiceMaterialsByServiceMaterialIdAsync(int serviceMaterialId);
+        Task<LaundryServiceMaterialResponse> GetById(int id);
     }
 }

@@ -100,6 +100,16 @@ namespace Washi.API.Services
                 return new UserResponse($"An error ocurred while deleting user: {ex.Message}");
             }
         }
+        public async Task<UserResponse> FindByEmail(string email)
+        {
+            var users = await _userRepository.ListAsync();
+            var user = new User();
+            foreach (var u in users)
+            {
+                if (u.Email == email) user = u;
+            }
+            return new UserResponse(user);
+        }
 
         //Authentication
 

@@ -139,5 +139,13 @@ namespace Washi.API.Services
                 return new LaundryServiceMaterialResponse($"An error ocurred while updating LaundryServiceMaterial: {ex.Message}");
             }
         }
+        public async Task<LaundryServiceMaterialResponse> GetById(int id)
+        {
+            var existingLaundryServiceMaterial = await _laundryServiceMaterialRepository.FindByIdAsync(id);
+
+            if (existingLaundryServiceMaterial == null)
+                return new LaundryServiceMaterialResponse("LaundryServiceMaterial not found");
+            return new LaundryServiceMaterialResponse(existingLaundryServiceMaterial);
+        }
     }
 }

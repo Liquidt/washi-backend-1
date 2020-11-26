@@ -56,6 +56,19 @@ namespace Washi.API.Controllers
             return Ok(userResource);
         }
 
+        [AllowAnonymous]
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetByEmailAsync(string email)
+        {
+            var result = await _userService.FindByEmail(email);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var userResource = _mapper
+                .Map<User, UserResource>(result.Resource);
+            return Ok(userResource);
+        }
+
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveUserResource resource)
         {
