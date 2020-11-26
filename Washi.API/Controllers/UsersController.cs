@@ -56,8 +56,7 @@ namespace Washi.API.Controllers
             return Ok(userResource);
         }
 
-        [AllowAnonymous]
-        [HttpGet("{email}")]
+        [HttpGet("email/{email}")]
         public async Task<IActionResult> GetByEmailAsync(string email)
         {
             var result = await _userService.FindByEmail(email);

@@ -10,8 +10,7 @@ using Washi.API.Resources;
 
 namespace Washi.API.Controllers
 {
-   // [Microsoft.AspNetCore.Authorization.Authorize]
-    [Route("/api/countries/{countryId}/currencies")]
+    //[Route("/api/countries/{countryId}/currencies")]
     public class CountryCurrenciesController:Controller
     {
         private readonly ICurrencyService _currencyService;

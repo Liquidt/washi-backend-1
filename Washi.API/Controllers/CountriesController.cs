@@ -11,8 +11,7 @@ using Washi.API.Resources;
 
 namespace Washi.API.Controllers
 {
-   // [Authorize]
-    [Microsoft.AspNetCore.Mvc.Route("/api/[controller]")]
+    //[Microsoft.AspNetCore.Mvc.Route("/api/[controller]")]
     public class CountriesController:Controller
     {
         private readonly ICountryService _countryService;
