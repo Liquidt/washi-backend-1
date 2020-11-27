@@ -87,6 +87,24 @@ namespace Washi.API.Services
             return laundries;
         }
 
+        public async Task<IEnumerable<UserProfile>> ListLaundriesByServiceMaterialIdAndDistrictIdAsync(int serviceMaterialId, int districtId)
+        {
+            var allProfiles = await _userProfileRepository.ListAsync();
+            var laundries = new List<UserProfile>();
+            foreach (var profile in allProfiles)
+            {
+                if (profile.DistrictId == districtId)
+                {
+                    foreach (var LSM in await ListLaundryServicesMaterialsByLaundryIdAsync(profile.UserId))
+                        if (LSM.ServiceMaterialId == serviceMaterialId)
+                        {
+                            laundries.Add(profile);
+                        }
+                }
+            }
+            return laundries;
+        }
+
         public async Task<IEnumerable<LaundryServiceMaterial>> ListLaundryServicesMaterialsByLaundryIdAsync(int laundryId)
         {
             var allLSMs = await _laundryServiceMaterialRepository.ListAsync();
@@ -146,6 +164,21 @@ namespace Washi.API.Services
             if (existingLaundryServiceMaterial == null)
                 return new LaundryServiceMaterialResponse("LaundryServiceMaterial not found");
             return new LaundryServiceMaterialResponse(existingLaundryServiceMaterial);
+        }
+        public async Task<LaundryServiceMaterialResponse> GetByLaundryIdAndServiceMaterialId(int laundryId, int serviceMaterialId)
+        {
+            var allLaundryServiceMaterials = await _laundryServiceMaterialRepository.ListAsync();
+            int laundryServiceMaterialId = 0;
+            foreach (var lsm in allLaundryServiceMaterials)
+            {
+                if (lsm.LaundryId == laundryId && lsm.ServiceMaterialId == serviceMaterialId)
+                    laundryServiceMaterialId = lsm.Id;
+            }
+            var laundryServiceMaterial = await _laundryServiceMaterialRepository.FindByIdAsync(laundryServiceMaterialId);
+
+            if (laundryServiceMaterial == null)
+                return new LaundryServiceMaterialResponse("LaundryServiceMaterial not found");
+            return new LaundryServiceMaterialResponse(laundryServiceMaterial);
         }
     }
 }
