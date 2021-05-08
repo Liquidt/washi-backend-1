@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Washi.API", "Washi.API.csproj", "{D9296739-3FEB-4863-B6BF-1763B8B233DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Washi.API.Test", "..\Washi.API.Test\Washi.API.Test.csproj", "{03E97778-F5CC-4820-A6B4-773C61F3EEC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Washi.API.Test", "..\Washi.API.Test\Washi.API.Test.csproj", "{03E97778-F5CC-4820-A6B4-773C61F3EEC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WashiSpecTest", "..\WashiSpecTest\WashiSpecTest.csproj", "{493A9207-1FED-47B8-BE9C-06D8A9B44C00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{03E97778-F5CC-4820-A6B4-773C61F3EEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03E97778-F5CC-4820-A6B4-773C61F3EEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03E97778-F5CC-4820-A6B4-773C61F3EEC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493A9207-1FED-47B8-BE9C-06D8A9B44C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493A9207-1FED-47B8-BE9C-06D8A9B44C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493A9207-1FED-47B8-BE9C-06D8A9B44C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493A9207-1FED-47B8-BE9C-06D8A9B44C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

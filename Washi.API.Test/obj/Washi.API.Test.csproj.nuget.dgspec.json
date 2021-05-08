@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj": {}
+    "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API.Test\\Washi.API.Test.csproj": {}
   },
   "projects": {
-    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj": {
+    "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API.Test\\Washi.API.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj",
+        "projectUniqueName": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API.Test\\Washi.API.Test.csproj",
         "projectName": "Washi.API.Test",
-        "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\Washi.API.Test.csproj",
+        "projectPath": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API.Test\\Washi.API.Test.csproj",
         "packagesPath": "C:\\Users\\Liquid\\.nuget\\packages\\",
-        "outputPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API.Test\\obj\\",
+        "outputPath": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -32,8 +32,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj": {
-                "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj"
+              "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API\\Washi.API.csproj": {
+                "projectPath": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API\\Washi.API.csproj"
               }
             }
           }
@@ -64,10 +64,6 @@
               "version": "[3.15.1, )"
             },
             "SpecFlow": {
-              "target": "Package",
-              "version": "[3.4.8, )"
-            },
-            "SpecFlow.NUnit": {
               "target": "Package",
               "version": "[3.4.8, )"
             },
@@ -102,18 +98,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj": {
+    "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API\\Washi.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
+        "projectUniqueName": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API\\Washi.API.csproj",
         "projectName": "Washi.API",
-        "projectPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\Washi.API.csproj",
+        "projectPath": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API\\Washi.API.csproj",
         "packagesPath": "C:\\Users\\Liquid\\.nuget\\packages\\",
-        "outputPath": "D:\\UPC\\Ciclo 6\\Complejidad\\TP\\washi-backend\\Washi.API\\obj\\",
+        "outputPath": "D:\\UPC\\Ciclo 7\\Experimentos\\washi-backend-test\\Washi.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -212,7 +208,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
