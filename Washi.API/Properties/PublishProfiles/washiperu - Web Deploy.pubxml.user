@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAD1GzZvbQR0q/549/AWXyOgAAAAACAAAAAAAQZgAAAAEAACAAAAB41TOVbGmAjKoHWp2E0w/n/TZDDtbsdBIojuU/J3mjiAAAAAAOgAAAAAIAACAAAACJYsUPhFh8TkwaoJd276wGhyfo0nMXvZZz1YzPmoEc+IAAAABb1GdOc8Ll86Kgf2vdteBywCyW6xfCHFwlQuAxtZdKdzK1/rATXvK+vGaJNu/Y6voutXBVfQG1necV1up+QFIQsQUjFPHJexScWuiXFNAw9OtyoTKSrDZHf2aaZNSLGNEkVzkP9a1trCV/yI4ppAJfkubWnEIX3V2umNvFwyDpqEAAAADuNbAeD1uO7es73ahptNbNk5sIy7kBqMfroHvXN7YPxxqJyISJsa2Sxty+C60SXDXRock+cLospNcm0XDdaFyk</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>server=35.222.43.184%3bdatabase=washi%3bport=3306%3buser=washi%3bpassword=washi2021</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>
